@@ -1,0 +1,64 @@
+{
+  "surtitre": "DÉCORATIONS À THÈME",
+  "titre": "Il y a des séjours\nqui *méritent un décor.*",
+  "intro": "Nous habillons le logement avant votre arrivée. Vous poussez la porte, la magie opère.",
+  "bouton": "Imaginer ma surprise",
+  "liste": [
+    {
+      "onglet": "Noël au chalet",
+      "icone": "sapin",
+      "mot": "Noël",
+      "photo": "/assets/lanterne.webp",
+      "surtitre": "LA MAGIE DES FÊTES",
+      "titre": "Un Noël *comme dans les films.*",
+      "texte": "Sapin décoré, guirlandes lumineuses, plaids et bougies : le chalet est prêt pour un réveillon au coin du feu, pendant que la neige tombe dehors.",
+      "points": [
+        "Sapin et décorations installés",
+        "Guirlandes et lumières chaleureuses",
+        "Table de fête dressée sur demande"
+      ]
+    },
+    {
+      "onglet": "Anniversaire",
+      "icone": "gateau",
+      "mot": "Surprise",
+      "photo": "/assets/bienvenue.webp",
+      "surtitre": "UN JOUR PAS COMME LES AUTRES",
+      "titre": "Un anniversaire *à la montagne.*",
+      "texte": "Ballons, guirlande personnalisée, petites attentions et décor festif : la surprise est en place quand vous ouvrez la porte. Vous n’avez plus qu’à souffler les bougies.",
+      "points": [
+        "Décor festif aux couleurs choisies",
+        "Message ou prénom personnalisé",
+        "Mise en place discrète avant l’arrivée"
+      ]
+    },
+    {
+      "onglet": "Saint-Valentin",
+      "icone": "coeur",
+      "mot": "À deux",
+      "photo": "/assets/poele.webp",
+      "surtitre": "SAINT-VALENTIN & ESCAPADE À DEUX",
+      "titre": "Une soirée *au coin du feu.*",
+      "texte": "Bougies, pétales, ambiance tamisée : nous préparons un cocon romantique pour une Saint-Valentin, une demande en mariage ou simplement le plaisir d’être à deux.",
+      "points": [
+        "Ambiance bougies et lumière douce",
+        "Décor romantique sur mesure",
+        "Idéal pour une demande ou un anniversaire de couple"
+      ]
+    },
+    {
+      "onglet": "Sur mesure",
+      "icone": "etoile",
+      "mot": "Votre idée",
+      "photo": "/assets/interieur.webp",
+      "surtitre": "VOUS RÊVEZ, NOUS ORGANISONS",
+      "titre": "Une envie *bien à vous ?*",
+      "texte": "Baby-shower, retrouvailles entre amis, enterrement de vie, Pâques en famille… Parlez-nous de votre idée, nous imaginons ensemble le décor qui vous ressemble.",
+      "points": [
+        "Thème libre, selon vos envies",
+        "Conseils et propositions personnalisées",
+        "Devis adapté à votre projet"
+      ]
+    }
+  ]
+}

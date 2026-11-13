@@ -84,7 +84,7 @@
       'Au plaisir d’échanger avec vous.'
     ].join('\n');
     $('#message-preview').value = message;
-    $('#send-email').href = `mailto:contact@ecrindebesse.fr?subject=${encodeURIComponent(`Demande ${profile.toLowerCase()} — ${data.get('service')}`)}&body=${encodeURIComponent(message)}`;
+    $('#send-email').href = `mailto:${form.dataset.email || 'contact@ecrindebesse.fr'}?subject=${encodeURIComponent(`Demande ${profile.toLowerCase()} — ${data.get('service')}`)}&body=${encodeURIComponent(message)}`;
     $('#copy-status').textContent = '';
     $('#request-dialog').showModal();
   });

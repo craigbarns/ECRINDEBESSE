@@ -1,0 +1,47 @@
+{
+  "photo": "/assets/outils.webp",
+  "surtitre": "ENTRETIEN & DÉPANNAGE",
+  "titre": "Un souci dans le logement ?\n*Nous avons aussi la solution.*",
+  "texte": "Parce que la gestion d’un logement ne s’arrête pas à l’accueil des voyageurs, nous travaillons main dans la main avec un partenaire multiservices de confiance, plombier chauffagiste de métier.",
+  "metiers": [
+    {
+      "nom": "Plomberie",
+      "icone": "goutte"
+    },
+    {
+      "nom": "Chauffage",
+      "icone": "flamme"
+    },
+    {
+      "nom": "Dépannage électrique",
+      "icone": "ampoule"
+    },
+    {
+      "nom": "Petits travaux",
+      "icone": "outil"
+    },
+    {
+      "nom": "Peinture & entretien",
+      "icone": "rouleau"
+    },
+    {
+      "nom": "Entretien extérieur",
+      "icone": "feuille"
+    }
+  ],
+  "moments": [
+    {
+      "titre": "Avant",
+      "texte": "Vérification du chauffage, de l’eau chaude et des équipements."
+    },
+    {
+      "titre": "Pendant",
+      "texte": "Une intervention rapide si un souci survient."
+    },
+    {
+      "titre": "Après",
+      "texte": "Contrôle, petites réparations et remise en état."
+    }
+  ],
+  "bouton": "Demander une intervention"
+}

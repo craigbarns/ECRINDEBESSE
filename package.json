@@ -1,0 +1,12 @@
+{
+  "name": "ecrin-de-besse",
+  "private": true,
+  "description": "Site vitrine Écrin de Besse — conciergerie au cœur du Sancy",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "sharp": "^0.33.5"
+  }
+}

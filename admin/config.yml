@@ -1,0 +1,219 @@
+# Administration du site Écrin de Besse (Decap CMS)
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    update: "Mise à jour : {{slug}}"
+    uploadMedia: "Ajout photo : {{path}}"
+    deleteMedia: "Suppression photo : {{path}}"
+
+locale: fr
+site_url: https://ecrindebesse.netlify.app
+display_url: https://ecrindebesse.netlify.app
+logo_url: /assets/sceau-vert.png
+media_folder: assets/uploads
+public_folder: /assets/uploads
+publish_mode: simple
+editor:
+  preview: false
+
+collections:
+  - name: pages
+    label: "Contenu du site"
+    editor: { preview: false }
+    files:
+      - name: accueil
+        label: "1 · Accueil & bienvenue"
+        file: content/accueil.json
+        fields:
+          - { label: "Grande photo d'accueil", name: photo, widget: image, hint: &photo_aide "Photo en paysage de préférence, idéalement 2000 px de large. Elle est automatiquement allégée pour le web." }
+          - { label: "Description de la photo (pour Google et l'accessibilité)", name: photo_description, widget: string }
+          - { label: "Petit surtitre", name: surtitre, widget: string }
+          - { label: "Grand titre", name: titre, widget: text, hint: &titre_aide "Astuce : mettez des mots entre *étoiles* pour les écrire en italique doré. Un retour à la ligne crée un saut de ligne." }
+          - { label: "Texte sous le titre", name: intro, widget: text }
+          - { label: "Bouton propriétaires", name: bouton_proprietaire, widget: string }
+          - { label: "Bouton voyageurs", name: bouton_voyageur, widget: string }
+          - { label: "Localisation (bas de la photo)", name: localisation, widget: string }
+          - { label: "Bandeau défilant (prestations)", name: bandeau, widget: list, field: { label: "Prestation", name: item, widget: string } }
+          - { label: "Bienvenue · surtitre", name: bienvenue_surtitre, widget: string }
+          - { label: "Bienvenue · titre", name: bienvenue_titre, widget: text, hint: *titre_aide }
+          - { label: "Bienvenue · phrase d'accroche", name: bienvenue_accroche, widget: text }
+          - { label: "Bienvenue · texte", name: bienvenue_texte, widget: text, hint: &texte_aide "Laissez une ligne vide pour commencer un nouveau paragraphe. *Étoiles* = italique." }
+          - label: "Nos 3 engagements"
+            name: piliers
+            widget: list
+            max: 3
+            fields:
+              - { label: Titre, name: titre, widget: string }
+              - { label: Texte, name: texte, widget: string }
+
+      - name: proprietaires
+        label: "2 · Propriétaires"
+        file: content/proprietaires.json
+        fields:
+          - { label: Photo, name: photo, widget: image, hint: *photo_aide }
+          - { label: "Description de la photo", name: photo_description, widget: string }
+          - { label: "Encart vert sur la photo", name: encart, widget: text, hint: *titre_aide }
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Introduction, name: intro, widget: text }
+          - label: "Prestations (menu dépliant)"
+            name: services
+            widget: list
+            summary: "{{fields.titre}}"
+            fields:
+              - { label: "Nom de la prestation", name: titre, widget: string }
+              - { label: Description, name: texte, widget: text }
+          - { label: "Texte du bouton", name: bouton, widget: string }
+
+      - name: voyageurs
+        label: "3 · Voyageurs"
+        file: content/voyageurs.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: "Texte à droite du titre", name: intro, widget: text }
+          - { label: "Carte « Arrivée » · photo", name: arrivee_photo, widget: image, hint: *photo_aide }
+          - { label: "Carte « Arrivée » · surtitre", name: arrivee_surtitre, widget: string }
+          - { label: "Carte « Arrivée » · titre", name: arrivee_titre, widget: text, hint: *titre_aide }
+          - { label: "Carte « Arrivée » · texte", name: arrivee_texte, widget: text }
+          - { label: "Courses · étiquette (laisser vide pour masquer)", name: courses_etiquette, widget: string, required: false }
+          - { label: "Courses · titre", name: courses_titre, widget: text, hint: *titre_aide }
+          - { label: "Courses · texte", name: courses_texte, widget: text }
+          - { label: "Courses · étapes", name: courses_etapes, widget: list, field: { label: "Étape", name: item, widget: string } }
+          - { label: "Courses · lien", name: courses_lien, widget: string }
+          - { label: "Carte décorations · photo", name: occasions_photo, widget: image, hint: *photo_aide }
+          - { label: "Carte décorations · surtitre", name: occasions_surtitre, widget: string }
+          - { label: "Carte décorations · titre", name: occasions_titre, widget: text, hint: *titre_aide }
+          - { label: "Carte décorations · lien", name: occasions_lien, widget: string }
+          - { label: "Carte dépannage · titre", name: souci_titre, widget: string }
+          - { label: "Carte dépannage · texte", name: souci_texte, widget: text }
+          - { label: "Carte dépannage · lien", name: souci_lien, widget: string }
+          - { label: "Note sous les cartes", name: note, widget: string }
+
+      - name: occasions
+        label: "4 · Décorations à thème"
+        file: content/occasions.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Introduction, name: intro, widget: text }
+          - { label: "Texte du bouton", name: bouton, widget: string }
+          - label: "Occasions (onglets)"
+            name: liste
+            widget: list
+            summary: "{{fields.onglet}}"
+            min: 1
+            fields:
+              - { label: "Nom de l'onglet", name: onglet, widget: string }
+              - { label: "Icône", name: icone, widget: select, options: [ { label: "Sapin", value: sapin }, { label: "Gâteau", value: gateau }, { label: "Cœur", value: coeur }, { label: "Étoile", value: etoile }, { label: "Cadeau", value: cadeau }, { label: "Flocon", value: flocon }, { label: "Maison", value: maison } ] }
+              - { label: Photo, name: photo, widget: image, hint: *photo_aide }
+              - { label: "Grand mot sur la photo", name: mot, widget: string }
+              - { label: Surtitre, name: surtitre, widget: string }
+              - { label: Titre, name: titre, widget: string, hint: *titre_aide }
+              - { label: Texte, name: texte, widget: text }
+              - { label: "Points inclus", name: points, widget: list, field: { label: Point, name: item, widget: string } }
+
+      - name: entretien
+        label: "5 · Entretien & dépannage"
+        file: content/entretien.json
+        fields:
+          - { label: Photo, name: photo, widget: image, hint: *photo_aide }
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Texte, name: texte, widget: text, hint: *texte_aide }
+          - label: "Métiers"
+            name: metiers
+            widget: list
+            summary: "{{fields.nom}}"
+            fields:
+              - { label: Nom, name: nom, widget: string }
+              - { label: "Icône", name: icone, widget: select, options: [ { label: "Goutte (plomberie)", value: goutte }, { label: "Flamme (chauffage)", value: flamme }, { label: "Ampoule (électricité)", value: ampoule }, { label: "Clé à molette (travaux)", value: outil }, { label: "Rouleau (peinture)", value: rouleau }, { label: "Feuille (extérieur)", value: feuille }, { label: "Maison", value: maison }, { label: "Clé", value: cle } ] }
+          - label: "Avant / Pendant / Après"
+            name: moments
+            widget: list
+            max: 3
+            fields:
+              - { label: Titre, name: titre, widget: string }
+              - { label: Texte, name: texte, widget: string }
+          - { label: "Texte du bouton", name: bouton, widget: string }
+
+      - name: sancy
+        label: "6 · Le Sancy"
+        file: content/sancy.json
+        fields:
+          - { label: "Photo de fond", name: photo, widget: image, hint: *photo_aide }
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Texte, name: texte, widget: text }
+          - { label: "Lieux", name: lieux, widget: list, field: { label: Lieu, name: item, widget: string } }
+          - { label: "Petite note", name: note, widget: string }
+
+      - name: histoire
+        label: "7 · Notre histoire"
+        file: content/histoire.json
+        fields:
+          - { label: Photo, name: photo, widget: image, hint: "Photo en portrait (verticale) de préférence." }
+          - { label: "Légende sur la photo", name: legende, widget: string }
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Texte, name: texte, widget: text, hint: *texte_aide }
+          - { label: Citation, name: citation, widget: text, required: false }
+          - { label: Signature, name: signature, widget: string }
+          - { label: "Sous la signature", name: signature_sous, widget: string }
+
+      - name: etapes
+        label: "8 · Comment ça marche"
+        file: content/etapes.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - label: "Étapes"
+            name: liste
+            widget: list
+            fields:
+              - { label: Titre, name: titre, widget: string }
+              - { label: Texte, name: texte, widget: text }
+
+      - name: faq
+        label: "9 · Questions fréquentes"
+        file: content/faq.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: "Lien sous le titre", name: lien, widget: string }
+          - label: Questions
+            name: questions
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: "Réponse", name: reponse, widget: text, hint: *texte_aide }
+
+      - name: contact
+        label: "10 · Contact & pied de page"
+        file: content/contact.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: *titre_aide }
+          - { label: Texte, name: texte, widget: text }
+          - { label: "Nom en grand (pied de page)", name: pied_nom, widget: string }
+          - { label: "Slogan (pied de page)", name: pied_slogan, widget: string }
+          - { label: "Mention (tout en bas)", name: pied_mention, widget: string }
+
+      - name: reglages
+        label: "⚙️ Coordonnées, logo & référencement"
+        file: content/reglages.json
+        fields:
+          - { label: "Téléphone", name: telephone, widget: string, hint: "Utilisé partout sur le site (boutons d'appel inclus)." }
+          - { label: "E-mail", name: email, widget: string, hint: "Adresse qui reçoit les demandes du formulaire." }
+          - { label: "Zone d'intervention", name: zone, widget: string }
+          - { label: "Titre Google (onglet du navigateur)", name: seo_titre, widget: string }
+          - { label: "Description Google", name: seo_description, widget: text, hint: "Environ 150 caractères." }
+          - { label: "Logo du menu (version claire, fond transparent)", name: logo, widget: image }
+          - { label: "Logo rond (version verte)", name: sceau_vert, widget: image }
+          - { label: "Logo rond (version claire)", name: sceau_clair, widget: image }
+          - { label: "Texte du badge tournant", name: badge, widget: string }
+          - { label: "Bouton du menu", name: bouton_menu, widget: string }
+          - { label: "Bouton d'appel (mobile)", name: barre_appel, widget: string }
+          - { label: "Mentions légales", name: mentions_legales, widget: text, hint: "Raison sociale, adresse, SIRET, responsable de publication, hébergeur (Netlify, Inc., 512 2nd Street, San Francisco, CA 94107, USA)." }

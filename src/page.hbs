@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1c3029">
+  <title>{{reglages.seo_titre}}</title>
+  <meta name="description" content="{{reglages.seo_description}}">
+  <meta property="og:title" content="{{reglages.seo_titre}}">
+  <meta property="og:description" content="{{reglages.seo_description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="{{img accueil.photo}}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="{{img accueil.photo}}">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/upgrade.css">
+  <script>if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))location.replace('/admin/'+location.hash)</script>
+  <script src="/app.js" defer></script>
+  <script src="/upgrade.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  {{{icons}}}
+
+  <header class="header" id="haut">
+    <div class="header-inner wrap">
+      <a class="brand" href="#haut" aria-label="Écrin de Besse, accueil"><img src="{{img reglages.logo}}" alt="Écrin de Besse Conciergerie" width="297" height="137"></a>
+      <nav class="nav" id="navigation" aria-label="Navigation principale">
+        <a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#histoire">Notre histoire</a>
+        <a class="button button-small button-gold" href="#contact">{{reglages.bouton_menu}} <svg><use href="#i-arrow"/></svg></a>
+      </nav>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="{{img accueil.photo}}" alt="{{accueil.photo_description}}" width="2400" height="1400" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <canvas class="snow" aria-hidden="true"></canvas>
+      <div class="hero-content wrap">
+        <p class="eyebrow light hero-in" style="--d:.1s"><span class="short-line"></span> {{accueil.surtitre}}</p>
+        <h1 id="hero-title">{{{lines accueil.titre}}}</h1>
+        <p class="hero-intro hero-in" style="--d:.8s">{{{t accueil.intro}}}</p>
+        <div class="hero-actions hero-in" style="--d:.95s"><a class="button button-gold" href="#proprietaires">{{accueil.bouton_proprietaire}} <svg><use href="#i-arrow"/></svg></a><a class="button button-outline" href="#voyageurs">{{accueil.bouton_voyageur}} <svg><use href="#i-arrow"/></svg></a></div>
+      </div>
+      <div class="hero-badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="badge-text"><defs><path id="badge-circle" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs><text><textPath href="#badge-circle" textLength="482">{{reglages.badge}}</textPath></text></svg>
+        <svg class="badge-flake"><use href="#i-flake"/></svg>
+      </div>
+      <div class="hero-bottom wrap"><span><svg><use href="#i-pin"/></svg> {{accueil.localisation}}</span><a href="#bienvenue" class="scroll-cue">Découvrir <span class="cue-line" aria-hidden="true"></span></a></div>
+    </section>
+
+    <div class="marquee" aria-label="Nos prestations">
+      <div class="marquee-track">
+        {{#each accueil.bandeau}}<span>{{this}}</span><i>✦</i>{{/each}}
+        {{#each accueil.bandeau}}<span aria-hidden="true">{{this}}</span><i>✦</i>{{/each}}
+      </div>
+    </div>
+
+    <section class="intro section wrap" id="bienvenue">
+      <div class="intro-heading reveal"><p class="eyebrow">{{accueil.bienvenue_surtitre}}</p><h2>{{{t accueil.bienvenue_titre}}}</h2></div>
+      <div class="intro-copy reveal"><p class="lead">{{{t accueil.bienvenue_accroche}}}</p>{{{p accueil.bienvenue_texte}}}
+        <ul class="pillars">{{#each accueil.piliers}}<li><svg><use href="#{{pick @index 'i-pin' 'i-key' 'i-spark'}}"/></svg><span><strong>{{titre}}</strong>{{texte}}</span></li>{{/each}}</ul>
+      </div>
+    </section>
+
+    <section class="owners section" id="proprietaires">
+      <div class="wrap owners-layout">
+        <div class="owner-visual reveal"><div class="img-reveal"><img src="{{img proprietaires.photo}}" alt="{{proprietaires.photo_description}}" width="1000" height="700" loading="lazy"></div><div class="photo-note"><svg><use href="#i-house"/></svg><span>{{{t proprietaires.encart 'strong'}}}</span></div><span class="vertical-caption">VOTRE BIEN. NOTRE ATTENTION.</span></div>
+        <div class="owner-content reveal"><p class="eyebrow">{{proprietaires.surtitre}}</p><h2>{{{t proprietaires.titre}}}</h2><p class="section-intro">{{{t proprietaires.intro}}}</p>
+          <div class="service-rows">
+            {{#each proprietaires.services}}<details{{#if @first}} open{{/if}}><summary><span class="service-num">{{num @index}}</span><h3>{{titre}}</h3><span class="plus"></span></summary><div class="detail-copy">{{{t texte}}}</div></details>
+            {{/each}}
+          </div>
+          <a class="button button-green" href="#contact" data-profile="proprietaire">{{proprietaires.bouton}} <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="guests section" id="voyageurs"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">{{voyageurs.surtitre}}</p><h2>{{{t voyageurs.titre}}}</h2></div><p>{{{t voyageurs.intro}}}</p></div>
+      <div class="guest-bento">
+        <article class="bento bento-tall reveal"><img src="{{img voyageurs.arrivee_photo}}" alt="" width="640" height="560" loading="lazy"><div class="bento-copy"><span class="eyebrow light">{{voyageurs.arrivee_surtitre}}</span><h3>{{{t voyageurs.arrivee_titre}}}</h3><p>{{{t voyageurs.arrivee_texte}}}</p></div></article>
+        <article class="bento bento-feature reveal" style="--d:.1s"><div class="bento-icon"><svg><use href="#i-bag"/></svg></div>{{#if voyageurs.courses_etiquette}}<span class="tag">{{voyageurs.courses_etiquette}}</span>{{/if}}<h3>{{{t voyageurs.courses_titre}}}</h3><p>{{{t voyageurs.courses_texte}}}</p>
+          <ol class="mini-steps">{{#each voyageurs.courses_etapes}}<li><span>{{add1 @index}}</span>{{this}}</li>{{/each}}</ol>
+          <a href="#contact" class="text-link" data-service="Courses au drive" data-profile="voyageur">{{voyageurs.courses_lien}} <svg><use href="#i-arrow"/></svg></a></article>
+        <article class="bento bento-photo reveal" style="--d:.15s"><img src="{{img voyageurs.occasions_photo}}" alt="" width="900" height="869" loading="lazy"><div class="bento-copy"><span class="eyebrow light">{{voyageurs.occasions_surtitre}}</span><h3>{{{t voyageurs.occasions_titre}}}</h3><a href="#occasions" class="text-link light">{{voyageurs.occasions_lien}} <svg><use href="#i-arrow"/></svg></a></div></article>
+        <article class="bento bento-dark reveal" style="--d:.2s"><div class="bento-icon gold"><svg><use href="#i-tool"/></svg></div><h3>{{{t voyageurs.souci_titre}}}</h3><p>{{{t voyageurs.souci_texte}}}</p><a href="#entretien" class="text-link light">{{voyageurs.souci_lien}} <svg><use href="#i-arrow"/></svg></a></article>
+      </div>
+      <p class="services-note">{{{t voyageurs.note}}} <a href="#contact">Échangeons sur vos envies.</a></p>
+    </div></section>
+
+    <section class="occasions section" id="occasions"><div class="wrap">
+      <div class="center-heading reveal"><p class="eyebrow">{{occasions.surtitre}}</p><h2>{{{t occasions.titre}}}</h2><p class="center-intro">{{{t occasions.intro}}}</p></div>
+      <div class="occasion-tabs reveal" role="tablist" aria-label="Choisir une occasion">
+        {{#each occasions.liste}}<button role="tab" id="tab-occ-{{@index}}" aria-controls="panel-occasion" aria-selected="{{#if @first}}true{{else}}false{{/if}}"{{#unless @first}} tabindex="-1"{{/unless}} data-occasion="{{@index}}"><svg><use href="#{{icon icone}}"/></svg> {{onglet}}</button>
+        {{/each}}
+      </div>
+      {{#with occasions.liste.[0]}}
+      <div class="occasion-panel reveal" id="panel-occasion" role="tabpanel" aria-labelledby="tab-occ-0" tabindex="0">
+        <div class="occasion-media"><img id="occasion-img" src="{{img photo}}" alt="" width="900" height="869" loading="lazy"><span class="occasion-word" id="occasion-word">{{mot}}</span></div>
+        <div class="occasion-copy">
+          <span class="eyebrow" id="occasion-eyebrow">{{surtitre}}</span>
+          <h3 id="occasion-title">{{{t titre}}}</h3>
+          <p id="occasion-text">{{{t texte}}}</p>
+          <ul class="occasion-list" id="occasion-list">{{#each points}}<li>{{this}}</li>{{/each}}</ul>
+          <a href="#contact" class="button button-green" id="occasion-cta" data-service="Décoration à thème" data-profile="voyageur">{{../occasions.bouton}} <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      {{/with}}
+      <script>window.OCCASIONS={{{occasionsJson}}};</script>
+    </div></section>
+
+    <section class="maintenance" id="entretien">
+      <div class="maintenance-media"><img src="{{img entretien.photo}}" alt="" width="850" height="1002" loading="lazy"></div>
+      <div class="maintenance-content">
+        <div class="reveal"><p class="eyebrow light">{{entretien.surtitre}}</p><h2>{{{t entretien.titre}}}</h2>{{{p entretien.texte}}}</div>
+        <ul class="trades reveal">{{#each entretien.metiers}}<li><svg><use href="#{{icon icone}}"/></svg>{{nom}}</li>{{/each}}</ul>
+        <div class="timeline reveal">{{#each entretien.moments}}<div><span>{{titre}}</span>{{texte}}</div>{{/each}}</div>
+        <a class="button button-gold reveal" href="#contact" data-service="Entretien et dépannage" data-profile="proprietaire">{{entretien.bouton}} <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="landscape" id="sancy"><img src="{{img sancy.photo}}" alt="" width="2400" height="1400" loading="lazy" data-parallax><div class="landscape-shade"></div><div class="wrap landscape-content reveal"><p class="eyebrow light">{{sancy.surtitre}}</p><h2>{{{t sancy.titre}}}</h2><p>{{{t sancy.texte}}}</p><div class="locations">{{#each sancy.lieux}}<span>{{this}}</span>{{/each}}</div><small>{{sancy.note}}</small></div></section>
+
+    <section class="story section wrap" id="histoire"><div class="story-photo reveal"><img src="{{img histoire.photo}}" alt="" width="680" height="800" loading="lazy"><img class="story-seal" src="{{img reglages.sceau_vert}}" alt="" width="520" height="520" loading="lazy"><span class="image-label">{{histoire.legende}}</span></div><div class="story-content reveal"><p class="eyebrow">{{histoire.surtitre}}</p><h2>{{{t histoire.titre}}}</h2>{{{p histoire.texte}}}{{#if histoire.citation}}<blockquote>{{{t histoire.citation}}}</blockquote>{{/if}}<div class="signature">{{histoire.signature}}<span>{{histoire.signature_sous}}</span></div></div></section>
+
+    <section class="process section"><div class="wrap"><div class="center-heading reveal"><p class="eyebrow">{{etapes.surtitre}}</p><h2>{{{t etapes.titre}}}</h2></div><div class="steps">{{#each etapes.liste}}<article class="reveal" style="--d:{{delay @index}}s"><span>{{num @index}}</span><h3>{{titre}}</h3><p>{{{t texte}}}</p></article>{{/each}}</div></div></section>
+
+    <section class="faq section wrap"><div class="reveal"><p class="eyebrow">{{faq.surtitre}}</p><h2>{{{t faq.titre}}}</h2><a href="#contact" class="text-link">{{faq.lien}} <svg><use href="#i-arrow"/></svg></a></div><div class="faq-list reveal">
+      {{#each faq.questions}}<details><summary>{{{t question}}}<span class="plus"></span></summary>{{{p reponse}}}</details>
+      {{/each}}
+    </div></section>
+
+    <section class="contact section" id="contact"><canvas class="snow snow-soft" aria-hidden="true"></canvas><div class="wrap contact-layout"><div class="contact-copy reveal"><p class="eyebrow light">{{contact.surtitre}}</p><h2>{{{t contact.titre}}}</h2><p>{{{t contact.texte}}}</p><a class="contact-line" href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg><span><small>APPELEZ-NOUS</small>{{reglages.telephone}}</span></a><a class="contact-line email-line" href="mailto:{{reglages.email}}"><svg><use href="#i-mail"/></svg><span><small>ÉCRIVEZ-NOUS</small>{{reglages.email}}</span></a><div class="contact-location"><svg><use href="#i-pin"/></svg> {{reglages.zone}}</div></div>
+      <form id="contact-form" class="contact-form reveal" data-email="{{reglages.email}}">
+        <noscript><p>Pour préparer votre demande ici, activez JavaScript. Vous pouvez aussi nous contacter directement au {{reglages.telephone}} ou à {{reglages.email}}.</p></noscript>
+        <fieldset class="profile-field"><legend>Je suis…</legend><div class="profile-options"><label><input type="radio" name="profil" value="proprietaire" checked><span><svg><use href="#i-house"/></svg> Propriétaire</span></label><label><input type="radio" name="profil" value="voyageur"><span><svg><use href="#i-bag"/></svg> Voyageur</span></label></div></fieldset>
+        <div class="form-grid"><label>Votre nom <span aria-hidden="true">*</span><input name="nom" autocomplete="name" placeholder="Prénom et nom" required maxlength="100"></label><label>Votre téléphone<input type="tel" name="telephone" autocomplete="tel" placeholder="06 00 00 00 00" maxlength="30"></label></div>
+        <label>Votre e-mail <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required maxlength="150"></label>
+        <label id="location-label">Où se situe votre logement ?<input name="lieu" placeholder="Besse, Super-Besse, Murol…" maxlength="150"></label>
+        <label>Ce qui vous intéresse<select name="service" id="service"><option value="Un accompagnement personnalisé">Un accompagnement personnalisé</option><option>Intendance et suivi</option><option>Accueil des voyageurs</option><option>Ménage et linge</option><option>Courses au drive</option><option>Décoration à thème</option><option>Entretien et dépannage</option></select></label>
+        <label>Quelques mots sur votre projet <span aria-hidden="true">*</span><textarea name="message" rows="3" placeholder="Votre logement, vos dates, vos envies…" required maxlength="2000"></textarea></label>
+        <button class="button button-gold" type="submit" disabled>Préparer ma demande <svg><use href="#i-arrow"/></svg></button>
+        <p class="form-note">* Champs obligatoires. Votre demande sera préparée pour votre messagerie. Rien n’est envoyé automatiquement.</p>
+        <p class="privacy-note">Les informations saisies restent dans votre navigateur jusqu’à votre envoi par e-mail. <button type="button" class="inline-button" data-dialog="privacy-dialog">Confidentialité</button></p>
+      </form>
+    </div></section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-hero"><img src="{{img reglages.sceau_clair}}" alt="" width="520" height="520" loading="lazy" class="footer-seal"><p class="footer-word">{{contact.pied_nom}}</p><p class="footer-tag">{{contact.pied_slogan}}</p></div>
+    <div class="wrap footer-top"><nav aria-label="Liens du pied de page"><a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#contact">Contact</a></nav><a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a><a href="mailto:{{reglages.email}}">{{reglages.email}}</a><a href="#haut" class="back-top">Retour en haut <span aria-hidden="true">↑</span></a></div>
+    <div class="wrap footer-bottom"><span>© <span id="year">2026</span> {{contact.pied_nom}}</span><span>{{contact.pied_mention}}</span><div><button data-dialog="legal-dialog">Informations légales</button><button data-dialog="privacy-dialog">Confidentialité</button></div></div>
+  </footer>
+  <div class="mobile-contact"><a href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg> {{reglages.barre_appel}}</a><a href="#contact">Mon projet <svg><use href="#i-arrow"/></svg></a></div>
+
+  <dialog id="request-dialog" class="dialog" aria-labelledby="request-title"><button class="dialog-close" aria-label="Fermer la demande" data-close>×</button><p class="eyebrow">UN PREMIER PAS, TOUT SIMPLEMENT</p><h2 id="request-title">Votre demande<br>est <em>prête.</em></h2><p>Relisez votre message, puis ouvrez votre messagerie pour l’envoyer à <strong>{{reglages.email}}</strong>.</p><label for="message-preview">Votre message</label><textarea id="message-preview" readonly rows="9"></textarea><a class="button button-green" id="send-email" href="mailto:{{reglages.email}}">Ouvrir ma messagerie <svg><use href="#i-arrow"/></svg></a><button class="copy-button" id="copy-message">Copier le message</button><p id="copy-status" role="status" aria-live="polite"></p><p class="form-note">Le message n’est pas encore envoyé. Si votre messagerie ne s’ouvre pas, copiez le texte et envoyez-le à l’adresse ci-dessus.</p></dialog>
+  <dialog id="privacy-dialog" class="dialog" aria-labelledby="privacy-title"><button class="dialog-close" aria-label="Fermer la confidentialité" data-close>×</button><p class="eyebrow">VOS INFORMATIONS</p><h2 id="privacy-title">Confidentialité</h2><p>Ce site n’utilise ni outil de suivi publicitaire, ni mesure d’audience, ni cookie applicatif. Les polices et images sont hébergées avec le site.</p><p>Le formulaire prépare un e-mail dans votre navigateur. Son contenu n’est pas transmis à un serveur de formulaire et n’est pas enregistré dans le stockage du navigateur. Vous décidez de l’envoyer depuis votre propre messagerie.</p><p>Pour toute question concernant un message adressé à Écrin de Besse, écrivez à <a href="mailto:{{reglages.email}}">{{reglages.email}}</a>.</p></dialog>
+  <dialog id="legal-dialog" class="dialog" aria-labelledby="legal-title"><button class="dialog-close" aria-label="Fermer les informations légales" data-close>×</button><p class="eyebrow">ÉCRIN DE BESSE</p><h2 id="legal-title">Informations légales</h2><p>Contact : <a href="mailto:{{reglages.email}}">{{reglages.email}}</a><br>Téléphone : <a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a></p>{{{p reglages.mentions_legales}}}</dialog>
+</body>
+</html>

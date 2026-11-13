@@ -64,20 +64,16 @@
   };
   document.querySelectorAll('canvas.snow').forEach(c => startSnow(c, c.classList.contains('snow-soft') ? 14000 : 6500));
 
-  // Occasions
-  const occasions = {
-    noel: { word: 'Noël', img: 'assets/lanterne.webp', eyebrow: 'LA MAGIE DES FÊTES', title: 'Un Noël <em>comme dans les&nbsp;films.</em>', text: 'Sapin décoré, guirlandes lumineuses, plaids et bougies : le chalet est prêt pour un réveillon au coin du feu, pendant que la neige tombe dehors.', list: ['Sapin et décorations installés', 'Guirlandes et lumières chaleureuses', 'Table de fête dressée sur demande'] },
-    anniv: { word: 'Surprise', img: 'assets/bienvenue.webp', eyebrow: 'UN JOUR PAS COMME LES AUTRES', title: 'Un anniversaire <em>à la montagne.</em>', text: 'Ballons, guirlande personnalisée, petites attentions et décor festif : la surprise est en place quand vous ouvrez la porte. Vous n’avez plus qu’à souffler les bougies.', list: ['Décor festif aux couleurs choisies', 'Message ou prénom personnalisé', 'Mise en place discrète avant l’arrivée'] },
-    love: { word: 'À deux', img: 'assets/poele.webp', eyebrow: 'SAINT-VALENTIN & ESCAPADE À DEUX', title: 'Une soirée <em>au coin du feu.</em>', text: 'Bougies, pétales, ambiance tamisée : nous préparons un cocon romantique pour une Saint-Valentin, une demande en mariage ou simplement le plaisir d’être à deux.', list: ['Ambiance bougies et lumière douce', 'Décor romantique sur mesure', 'Idéal pour une demande ou un anniversaire de couple'] },
-    mesure: { word: 'Votre idée', img: 'assets/interieur.webp', eyebrow: 'VOUS RÊVEZ, NOUS ORGANISONS', title: 'Une envie <em>bien à vous ?</em>', text: 'Baby-shower, retrouvailles entre amis, enterrement de vie, Pâques en famille… Parlez-nous de votre idée, nous imaginons ensemble le décor qui vous ressemble.', list: ['Thème libre, selon vos envies', 'Conseils et propositions personnalisées', 'Devis adapté à votre projet'] }
-  };
+  // Occasions (contenu injecté depuis l'admin)
+  const occasions = window.OCCASIONS || [];
   const tabs = [...document.querySelectorAll('[data-occasion]')];
   const panel = document.getElementById('panel-occasion');
   const copy = panel?.querySelector('.occasion-copy');
   const img = document.getElementById('occasion-img');
   const word = document.getElementById('occasion-word');
   const select = (tab, focus) => {
-    const o = occasions[tab.dataset.occasion];
+    const o = occasions[+tab.dataset.occasion];
+    if (!o) return;
     tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tab.id);
     if (focus) tab.focus();
@@ -86,8 +82,9 @@
       img.src = o.img; word.textContent = o.word;
       document.getElementById('occasion-eyebrow').textContent = o.eyebrow;
       document.getElementById('occasion-title').innerHTML = o.title;
-      document.getElementById('occasion-text').textContent = o.text;
+      document.getElementById('occasion-text').innerHTML = o.text;
       document.getElementById('occasion-list').innerHTML = o.list.map(item => `<li>${item}</li>`).join('');
+      img.alt = '';
       const done = () => [copy, img, word].forEach(el => el.classList.remove('swap'));
       img.complete ? requestAnimationFrame(done) : img.addEventListener('load', done, { once: true });
     }, reduce ? 0 : 320);
@@ -100,7 +97,7 @@
     });
   });
   // Préchargement discret des visuels d’occasion
-  addEventListener('load', () => Object.values(occasions).forEach(o => { const i = new Image(); i.src = o.img; }));
+  addEventListener('load', () => occasions.forEach(o => { const i = new Image(); i.src = o.img; }));
 })();
 (() => {
   // Barre d'action mobile : masquée sur le formulaire et le pied de page

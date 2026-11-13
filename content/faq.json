@@ -1,0 +1,31 @@
+{
+  "surtitre": "EN TOUTE SIMPLICITÉ",
+  "titre": "Vous vous posez\n*la question ?*",
+  "lien": "Nous sommes là pour en parler",
+  "questions": [
+    {
+      "question": "Dans quels secteurs intervenez-vous ?",
+      "reponse": "Nous accompagnons les propriétaires et les voyageurs autour de Besse, Super-Besse, Murol, du lac Chambon et de Saint-Nectaire. Contactez-nous avec l’adresse de votre logement pour confirmer notre possibilité d’intervention."
+    },
+    {
+      "question": "Peut-on choisir une prestation ponctuelle ?",
+      "reponse": "Oui. Accueil, ménage, intendance, courses ou décoration : nous proposons un accompagnement à la carte, ponctuel ou régulier, selon vos besoins et nos disponibilités."
+    },
+    {
+      "question": "Quels sont vos tarifs ?",
+      "reponse": "Chaque logement et chaque demande sont différents. Après un échange sur vos attentes, nous vous transmettons un devis personnalisé précisant les prestations retenues et leur tarif."
+    },
+    {
+      "question": "Comment fonctionne le service de courses ?",
+      "reponse": "Vous choisissez et réglez vos courses auprès du drive. Nous convenons ensemble du retrait et de l’accès au logement, puis nous les récupérons et les rangeons avant votre arrivée. Ce service se prévoit à l’avance, selon nos disponibilités."
+    },
+    {
+      "question": "Je ne suis pas client de la conciergerie, puis-je réserver une décoration ?",
+      "reponse": "Bien sûr. Que vous séjourniez dans un logement que nous gérons ou non, contactez-nous avec vos dates, l’adresse et l’occasion : nous vous dirons ce qu’il est possible d’organiser."
+    },
+    {
+      "question": "Proposez-vous aussi l’entretien technique ?",
+      "reponse": "Oui. Nous coordonnons l’entretien et les dépannages avec un partenaire multiservices, notamment en plomberie et chauffage. Le périmètre, les délais et le coût de l’intervention sont convenus selon le besoin."
+    }
+  ]
+}

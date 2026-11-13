@@ -1,0 +1,26 @@
+{
+  "surtitre": "CÔTÉ VOYAGEURS",
+  "titre": "Les petites attentions.\nLes *grands souvenirs.*",
+  "intro": "Posez vos valises, respirez.\nNous préparons ce petit supplément d’âme\nqui fait toute la différence.",
+  "arrivee_photo": "/assets/bienvenue.webp",
+  "arrivee_surtitre": "LE PLAISIR D’ARRIVER",
+  "arrivee_titre": "Déjà un peu\n*chez vous.*",
+  "arrivee_texte": "Un accueil personnalisé, du linge prêt et un kit de bienvenue pour commencer le séjour en douceur.",
+  "courses_etiquette": "Notre petit plus",
+  "courses_titre": "Les courses ?\n*Déjà rangées.*",
+  "courses_texte": "Commandez au drive. Nous récupérons vos courses et les rangeons dans le réfrigérateur et les placards, avant votre arrivée. Vous n’avez plus qu’à allumer le feu.",
+  "courses_etapes": [
+    "Vous commandez au drive",
+    "Nous récupérons",
+    "Tout est rangé à votre arrivée"
+  ],
+  "courses_lien": "Préparer mon arrivée",
+  "occasions_photo": "/assets/lanterne.webp",
+  "occasions_surtitre": "LES OCCASIONS",
+  "occasions_titre": "Un séjour qui *se célèbre.*",
+  "occasions_lien": "Voir les décorations",
+  "souci_titre": "Un souci pendant le séjour ?",
+  "souci_texte": "Une fuite, un chauffage capricieux : nous organisons l’intervention rapidement, avec notre partenaire multiservices.",
+  "souci_lien": "Découvrir l’entretien",
+  "note": "Des attentions à la carte, organisées sur demande et selon les disponibilités."
+}

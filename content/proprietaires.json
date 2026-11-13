@@ -1,0 +1,31 @@
+{
+  "photo": "/assets/interieur.webp",
+  "photo_description": "Un salon chaleureux avec cheminée et vue sur la montagne",
+  "encart": "Votre résidence secondaire\n*mérite toute notre attention.*",
+  "surtitre": "CÔTÉ PROPRIÉTAIRES",
+  "titre": "Confiez les clés.\nGardez *l’esprit tranquille.*",
+  "intro": "Une présence sur place, des échanges simples et un logement prêt à accueillir. Nous prenons le relais, selon vos besoins.",
+  "services": [
+    {
+      "titre": "Intendance & suivi du logement",
+      "texte": "Visites de contrôle, surveillance de votre résidence et vérification des équipements. Nous veillons sur votre bien avant, pendant et après chaque séjour."
+    },
+    {
+      "titre": "Accueil & départ des voyageurs",
+      "texte": "Remise des clés, présentation du logement, conseils pratiques et accompagnement pendant le séjour. Un accueil humain, jusque dans les derniers détails."
+    },
+    {
+      "titre": "Ménage & linge de maison",
+      "texte": "Préparation et entretien entre les séjours, gestion du linge et attention portée à la propreté. Le plaisir d’ouvrir la porte sur un logement accueillant."
+    },
+    {
+      "titre": "Entretien technique du logement",
+      "texte": "Plomberie, chauffage, petits dépannages : un partenaire multiservices de confiance intervient avant, pendant et après le séjour de vos voyageurs."
+    },
+    {
+      "titre": "Accompagnement sur mesure",
+      "texte": "Suivi des annonces et des réservations, coordination des interventions et retours réguliers. Nous définissons ensemble les prestations adaptées à votre logement."
+    }
+  ],
+  "bouton": "Parlons de mon logement"
+}

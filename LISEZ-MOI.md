@@ -1,5 +1,25 @@
 # Écrin de Besse — Site vitrine
 
+## Modifier le site (Laetitia)
+
+Rendez-vous sur **https://ecrindebesse.netlify.app/admin**, connectez-vous avec votre e-mail, choisissez une section, modifiez textes ou photos puis cliquez sur **Publier**. Le site se met à jour tout seul en 1 à 2 minutes.
+
+- Mettre un mot entre `*étoiles*` l'écrit en italique doré dans les titres.
+- Un retour à la ligne dans un titre crée un saut de ligne ; une ligne vide dans un texte crée un nouveau paragraphe.
+- Les photos envoyées sont automatiquement redimensionnées et allégées.
+
+## Fonctionnement technique
+
+- `content/*.json` : tous les textes et photos (modifiés par l'admin Decap CMS).
+- `src/page.hbs` : modèle de la page ; `build.js` assemble le site dans `dist/` (Netlify lance `npm run build`).
+- `admin/` : interface d'administration (Decap CMS, connexion Netlify Identity + Git Gateway).
+- `assets/uploads/` : photos envoyées depuis l'admin.
+
+Mise en route Netlify : Site configuration → Identity → Enable ; Registration → Invite only ; Services → Git Gateway → Enable ; puis Invite users avec l'e-mail de Laetitia.
+
+---
+
+
 Site statique (HTML/CSS/JS, sans compilation). Publication Netlify : dossier publié = racine du dépôt (voir `netlify.toml`).
 
 Version 2 : `upgrade.css` et `upgrade.js` ajoutent la neige animée, le header givré, le bandeau défilant, la mosaïque voyageurs, les décorations à thème (onglets + glisser au doigt), la section entretien, le menu mobile plein écran et la barre d'appel flottante.
