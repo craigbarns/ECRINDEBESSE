@@ -1,0 +1,72 @@
+{
+  "surtitre": "NOS TARIFS",
+  "titre": "Des prix clairs,\n*sans surprise.*",
+  "intro": "Quelques repères pour vous projeter. Chaque logement est différent : nous vous remettons toujours un devis personnalisé.",
+  "prestations": [
+    {
+      "categorie": "Gestion",
+      "nom": "Gestion locative complète",
+      "prefixe": "dès",
+      "prix": "18 %",
+      "detail": "Commission sur les locations · formule premium à 22 %"
+    },
+    {
+      "categorie": "Accueil",
+      "nom": "Accueil & départ des voyageurs",
+      "prefixe": "dès",
+      "prix": "65 €",
+      "detail": "Remise des clés et état des lieux"
+    },
+    {
+      "categorie": "Ménage",
+      "nom": "Ménage de fin de séjour",
+      "prefixe": "dès",
+      "prix": "40 €",
+      "detail": "Studio / T1, puis selon la surface"
+    },
+    {
+      "categorie": "Linge",
+      "nom": "Pack linge",
+      "prefixe": "dès",
+      "prix": "18 €",
+      "detail": "Linge de lit, de douche et de cuisine, par séjour ou par semaine"
+    },
+    {
+      "categorie": "Intendance",
+      "nom": "Mise en chauffe & contrôle",
+      "prefixe": "",
+      "prix": "32 €",
+      "detail": "Forfait d’une demi-heure, avant l’arrivée ou en hivernage"
+    },
+    {
+      "categorie": "Intendance",
+      "nom": "Courses au drive",
+      "prefixe": "",
+      "prix": "25 €",
+      "detail": "Livraison avant ou pendant le séjour, hors achats · rangement + 10 €"
+    },
+    {
+      "categorie": "Attentions",
+      "nom": "Kit d’accueil",
+      "prefixe": "",
+      "prix": "15 €",
+      "detail": "Panier de bienvenue, classique ou personnalisé"
+    },
+    {
+      "categorie": "Attentions",
+      "nom": "Décoration à thème",
+      "prefixe": "dès",
+      "prix": "25 €",
+      "detail": "Noël, anniversaire, moment à deux, sur mesure"
+    },
+    {
+      "categorie": "Technique",
+      "nom": "Intervention technique",
+      "prefixe": "dès",
+      "prix": "65 €",
+      "detail": "Forfait 1 h + déplacement, hors fournitures"
+    }
+  ],
+  "note": "Tarifs indicatifs. États des lieux de saison, création d’annonce, bois de chauffage, forfait premium mensuel… Demandez-nous la grille complète ou un devis adapté à votre logement.",
+  "bouton": "Demander un devis"
+}

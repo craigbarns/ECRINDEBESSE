@@ -63,7 +63,7 @@ let html = Handlebars.compile(read('src/page.hbs'))(data);
 
 // Typographie française : espaces insécables avant ? ! : ; » et après « (texte seulement)
 html = html.split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>)/).map(part =>
-  part.startsWith('<') ? part : part.replace(/ ([?!:;»])/g, '&nbsp;$1').replace(/« /g, '«&nbsp;')).join('');
+  part.startsWith('<') ? part : part.replace(/ ([?!:;»])/g, '&nbsp;$1').replace(/« /g, '«&nbsp;').replace(/(\d) (%|€|h\b|m2|pers)/g, '$1&nbsp;$2').replace(/(\d) (\d{3})/g, '$1&nbsp;$2')).join('');
 
 // ---------- Copie des fichiers statiques ----------
 fs.rmSync(DIST, { recursive: true, force: true });

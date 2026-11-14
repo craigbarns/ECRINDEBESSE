@@ -190,6 +190,27 @@ collections:
               - { label: Question, name: question, widget: string }
               - { label: "Réponse", name: reponse, widget: text, hint: *texte_aide }
 
+      - name: tarifs
+        label: "9 bis · Nos tarifs"
+        file: content/tarifs.json
+        fields:
+          - { label: Surtitre, name: surtitre, widget: string }
+          - { label: Titre, name: titre, widget: text, hint: "Mettez des mots entre *étoiles* pour l'italique doré." }
+          - { label: Introduction, name: intro, widget: text }
+          - label: "Prix d'appel"
+            name: prestations
+            widget: list
+            summary: "{{fields.nom}} — {{fields.prix}}"
+            hint: "La première carte est mise en avant (fond vert)."
+            fields:
+              - { label: "Catégorie (petit texte au-dessus)", name: categorie, widget: string }
+              - { label: Prestation, name: nom, widget: string }
+              - { label: "Devant le prix (ex. « dès », laisser vide sinon)", name: prefixe, widget: string, required: false }
+              - { label: "Prix (ex. 65 €)", name: prix, widget: string }
+              - { label: "Précision", name: detail, widget: string }
+          - { label: "Note sous les tarifs", name: note, widget: text }
+          - { label: "Texte du bouton", name: bouton, widget: string }
+
       - name: contact
         label: "10 · Contact & pied de page"
         file: content/contact.json

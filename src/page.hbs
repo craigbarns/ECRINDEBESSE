@@ -28,7 +28,7 @@
     <div class="header-inner wrap">
       <a class="brand" href="#haut" aria-label="Écrin de Besse, accueil"><img src="{{img reglages.logo}}" alt="Écrin de Besse Conciergerie" width="297" height="137"></a>
       <nav class="nav" id="navigation" aria-label="Navigation principale">
-        <a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#histoire">Notre histoire</a>
+        <a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#tarifs">Tarifs</a><a href="#histoire">Notre histoire</a>
         <a class="button button-small button-gold" href="#contact">{{reglages.bouton_menu}} <svg><use href="#i-arrow"/></svg></a>
       </nav>
       <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
@@ -130,6 +130,15 @@
 
     <section class="process section"><div class="wrap"><div class="center-heading reveal"><p class="eyebrow">{{etapes.surtitre}}</p><h2>{{{t etapes.titre}}}</h2></div><div class="steps">{{#each etapes.liste}}<article class="reveal" style="--d:{{delay @index}}s"><span>{{num @index}}</span><h3>{{titre}}</h3><p>{{{t texte}}}</p></article>{{/each}}</div></div></section>
 
+    <section class="pricing section" id="tarifs"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">{{tarifs.surtitre}}</p><h2>{{{t tarifs.titre}}}</h2></div><p>{{{t tarifs.intro}}}</p></div>
+      <div class="price-grid">
+        {{#each tarifs.prestations}}<article class="price-card reveal{{#if @first}} price-featured{{/if}}" style="--d:{{delay @index}}s"><span class="price-cat">{{categorie}}</span><h3>{{nom}}</h3><p class="price">{{#if prefixe}}<small>{{prefixe}}</small> {{/if}}{{prix}}</p><p class="price-detail">{{{t detail}}}</p></article>
+        {{/each}}
+      </div>
+      <div class="price-foot reveal"><p>{{{t tarifs.note}}}</p><a class="button button-green" href="#contact" data-profile="proprietaire">{{tarifs.bouton}} <svg><use href="#i-arrow"/></svg></a></div>
+    </div></section>
+
     <section class="faq section wrap"><div class="reveal"><p class="eyebrow">{{faq.surtitre}}</p><h2>{{{t faq.titre}}}</h2><a href="#contact" class="text-link">{{faq.lien}} <svg><use href="#i-arrow"/></svg></a></div><div class="faq-list reveal">
       {{#each faq.questions}}<details><summary>{{{t question}}}<span class="plus"></span></summary>{{{p reponse}}}</details>
       {{/each}}
@@ -152,7 +161,7 @@
   </main>
   <footer class="footer">
     <div class="wrap footer-hero"><img src="{{img reglages.sceau_clair}}" alt="" width="520" height="520" loading="lazy" class="footer-seal"><p class="footer-word">{{contact.pied_nom}}</p><p class="footer-tag">{{contact.pied_slogan}}</p></div>
-    <div class="wrap footer-top"><nav aria-label="Liens du pied de page"><a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#contact">Contact</a></nav><a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a><a href="mailto:{{reglages.email}}">{{reglages.email}}</a><a href="#haut" class="back-top">Retour en haut <span aria-hidden="true">↑</span></a></div>
+    <div class="wrap footer-top"><nav aria-label="Liens du pied de page"><a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#tarifs">Tarifs</a><a href="#contact">Contact</a></nav><a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a><a href="mailto:{{reglages.email}}">{{reglages.email}}</a><a href="#haut" class="back-top">Retour en haut <span aria-hidden="true">↑</span></a></div>
     <div class="wrap footer-bottom"><span>© <span id="year">2026</span> {{contact.pied_nom}}</span><span>{{contact.pied_mention}}</span><div><button data-dialog="legal-dialog">Informations légales</button><button data-dialog="privacy-dialog">Confidentialité</button></div></div>
   </footer>
   <div class="mobile-contact"><a href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg> {{reglages.barre_appel}}</a><a href="#contact">Mon projet <svg><use href="#i-arrow"/></svg></a></div>

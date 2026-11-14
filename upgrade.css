@@ -279,3 +279,34 @@ html{scroll-padding-top:84px}
   .hero h1{font-size:41px}
   .nav>a:not(.button){font-size:32px}
 }
+
+/* ===== Tarifs ===== */
+.pricing{background:var(--cream)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{position:relative;background:var(--paper);border:1px solid #e3d9c6;border-radius:4px;padding:30px 30px 28px;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.75,.2,1),box-shadow .45s,border-color .45s}
+.price-card:hover{transform:translateY(-5px);border-color:#d6c09a;box-shadow:0 26px 50px -30px rgba(20,46,37,.45)}
+.price-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper)}
+.price-card h3{font-size:25px;line-height:1.2;margin:10px 0 16px;color:var(--forest)}
+.price{font:400 50px/1 var(--serif);color:var(--forest);margin:auto 0 12px;letter-spacing:-1px}
+.price small{font:italic 20px var(--serif);color:var(--copper);letter-spacing:0;margin-right:2px}
+.price-detail{font-size:12.5px;color:var(--muted);margin:0;line-height:1.6;min-height:2.6em}
+.price-featured{background:linear-gradient(150deg,#2b4a3e,var(--forest) 55%,var(--deep));border-color:transparent;color:var(--paper)}
+.price-featured .price-cat{color:var(--gold)}
+.price-featured h3,.price-featured .price{color:var(--paper)}
+.price-featured .price small{color:var(--gold)}
+.price-featured .price-detail{color:#d6dbcf}
+.price-foot{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:34px;padding-top:30px;border-top:1px solid #d9d0be}
+.price-foot p{margin:0;font-size:13px;color:var(--muted);max-width:640px}
+.price-foot .button{flex-shrink:0}
+@media(max-width:1100px){.price-grid{grid-template-columns:repeat(2,1fr)}.nav{gap:16px}}
+@media(max-width:850px){.price-foot{flex-direction:column;align-items:flex-start}.price-detail,.price-foot p{font-size:14px}}
+@media(max-width:600px){
+  .price-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .price-card{padding:20px 16px}
+  .price-card h3{font-size:19px;margin:8px 0 12px}
+  .price{font-size:38px}
+  .price small{font-size:16px}
+  .price-detail{font-size:12.5px;min-height:0}
+  .price-cat{font-size:9px;letter-spacing:1.4px}
+  .price-featured{grid-column:span 2}
+}
