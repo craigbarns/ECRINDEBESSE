@@ -5,11 +5,15 @@
   "questions": [
     {
       "question": "Dans quels secteurs intervenez-vous ?",
-      "reponse": "Nous accompagnons les propriétaires et les voyageurs autour de Besse, Super-Besse, Murol, du lac Chambon et de Saint-Nectaire. Contactez-nous avec l’adresse de votre logement pour confirmer notre possibilité d’intervention."
+      "reponse": "Nous intervenons dans tout le massif du Sancy et ses alentours : Besse, Super-Besse, Murol, le lac Chambon, Saint-Nectaire, Le Mont-Dore, La Bourboule et les villages environnants. Contrairement à beaucoup de conciergeries du secteur, nous nous déplaçons aussi en dehors des stations. Contactez-nous avec l’adresse de votre logement : nous étudions chaque demande."
     },
     {
       "question": "Peut-on choisir une prestation ponctuelle ?",
       "reponse": "Oui. Accueil, ménage, intendance, courses ou décoration : nous proposons un accompagnement à la carte, ponctuel ou régulier, selon vos besoins et nos disponibilités."
+    },
+    {
+      "question": "Pouvez-vous allumer le chauffage avant notre arrivée ?",
+      "reponse": "Oui. Nous passons au logement avant l’arrivée des voyageurs pour lancer le chauffage, afin que la maison soit déjà agréable en arrivant. Ce passage peut être couplé à une visite de contrôle."
     },
     {
       "question": "Quels sont vos tarifs ?",

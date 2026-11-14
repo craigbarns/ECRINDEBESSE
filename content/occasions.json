@@ -22,7 +22,7 @@
       "onglet": "Anniversaire",
       "icone": "gateau",
       "mot": "Surprise",
-      "photo": "/assets/bienvenue.webp",
+      "photo": "/assets/anniversaire.webp",
       "surtitre": "UN JOUR PAS COMME LES AUTRES",
       "titre": "Un anniversaire *à la montagne.*",
       "texte": "Ballons, guirlande personnalisée, petites attentions et décor festif : la surprise est en place quand vous ouvrez la porte. Vous n’avez plus qu’à souffler les bougies.",
@@ -33,17 +33,17 @@
       ]
     },
     {
-      "onglet": "Saint-Valentin",
+      "onglet": "Moment à deux",
       "icone": "coeur",
       "mot": "À deux",
-      "photo": "/assets/poele.webp",
-      "surtitre": "SAINT-VALENTIN & ESCAPADE À DEUX",
-      "titre": "Une soirée *au coin du feu.*",
-      "texte": "Bougies, pétales, ambiance tamisée : nous préparons un cocon romantique pour une Saint-Valentin, une demande en mariage ou simplement le plaisir d’être à deux.",
+      "photo": "/assets/a-deux.webp",
+      "surtitre": "SAINT-VALENTIN, ANNIVERSAIRE DE COUPLE, ESCAPADE",
+      "titre": "Une soirée *rien qu’à deux.*",
+      "texte": "Bougies, pétales, ambiance tamisée : nous préparons un cocon romantique pour une Saint-Valentin, un anniversaire de rencontre, une demande en mariage ou simplement le plaisir de se retrouver.",
       "points": [
         "Ambiance bougies et lumière douce",
         "Décor romantique sur mesure",
-        "Idéal pour une demande ou un anniversaire de couple"
+        "Pour la Saint-Valentin… ou n’importe quel jour de l’année"
       ]
     },
     {

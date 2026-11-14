@@ -1,14 +1,15 @@
 {
   "photo": "/assets/chalet-hiver.webp",
   "photo_description": "La lumière chaleureuse d’un chalet au milieu des sapins enneigés, à la tombée du jour",
-  "surtitre": "CONCIERGERIE · BESSE & SUPER-BESSE",
+  "surtitre": "CONCIERGERIE · MASSIF DU SANCY & ALENTOURS",
   "titre": "Vous profitez.\nNous prenons soin\n*du reste.*",
   "intro": "Votre maison entre de bonnes mains.\nVos séjours, simplement inoubliables.",
   "bouton_proprietaire": "Je suis propriétaire",
   "bouton_voyageur": "Je prépare mon séjour",
-  "localisation": "Au cœur du massif du Sancy, en Auvergne",
+  "localisation": "Super-Besse, Besse, Murol, Le Mont-Dore… et tous les alentours",
   "bandeau": [
     "Accueil des voyageurs",
+    "Mise en chauffe avant votre arrivée",
     "Ménage & linge de maison",
     "Courses au drive, rangées pour vous",
     "Décorations à thème",
@@ -23,7 +24,7 @@
   "piliers": [
     {
       "titre": "Une présence locale",
-      "texte": "Sur place, à Besse et dans le Sancy"
+      "texte": "Dans tout le Sancy, villages et alentours compris"
     },
     {
       "titre": "Un relais de confiance",

@@ -19,7 +19,7 @@ const esc = (s) => Handlebars.escapeExpression(s == null ? '' : String(s));
 // *mot* -> italique doré ; retour à la ligne -> <br>
 const inline = (s, tag = 'em') => esc(s).trim()
   .replace(/\*([^*]+)\*/g, `<${tag}>$1</${tag}>`)
-  .replace(/\r?\n/g, '<br>');
+  .replace(/\r?\n/g, '<br>\n');
 const paragraphs = (s) => String(s || '').split(/\r?\n\s*\r?\n/).map(x => x.trim()).filter(Boolean)
   .map(x => `<p>${inline(x)}</p>`).join('');
 
