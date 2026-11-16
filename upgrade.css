@@ -310,3 +310,4 @@ html{scroll-padding-top:84px}
   .price-cat{font-size:9px;letter-spacing:1.4px}
   .price-featured{grid-column:span 2}
 }
+.bot-field{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}

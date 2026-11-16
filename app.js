@@ -39,7 +39,6 @@
   }
 
   const form = $('#contact-form');
-  form.querySelector('[type="submit"]').disabled = false;
   const updateProfile = () => {
     const traveller = form.elements.profil.value === 'voyageur';
     $('#location-label').firstChild.textContent = traveller ? 'Où se déroule votre séjour ?' : 'Où se situe votre logement ?';
@@ -63,7 +62,7 @@
     });
   });
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     for (const name of ['nom', 'message']) {
       const input = form.elements[name];
@@ -86,7 +85,24 @@
     $('#message-preview').value = message;
     $('#send-email').href = `mailto:${form.dataset.email || 'contact@ecrindebesse.fr'}?subject=${encodeURIComponent(`Demande ${profile.toLowerCase()} — ${data.get('service')}`)}&body=${encodeURIComponent(message)}`;
     $('#copy-status').textContent = '';
-    $('#request-dialog').showModal();
+    const button = form.querySelector('[type="submit"]');
+    button.disabled = true;
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      form.reset();
+      updateProfile();
+      $('#sent-dialog').showModal();
+    } catch {
+      // En cas d’échec, on propose l’envoi depuis la messagerie du visiteur.
+      $('#request-dialog').showModal();
+    } finally {
+      button.disabled = false;
+    }
   });
   for (const name of ['nom', 'message']) form.elements[name].addEventListener('input', event => event.target.setCustomValidity(''));
   $('#copy-message').addEventListener('click', async () => {
