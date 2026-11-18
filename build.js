@@ -21,7 +21,7 @@ let html = render(read('src/page.hbs'), data, read('src/icons.html'));
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 const copy = (src, dest) => fs.cpSync(path.join(ROOT, src), path.join(DIST, dest || src), { recursive: true });
-['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js'].forEach(f => copy(f));
+['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js', 'google41e7d606cc4d3619.html'].forEach(f => copy(f));
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
 // Fichiers pour l'aperçu en direct dans l'admin
