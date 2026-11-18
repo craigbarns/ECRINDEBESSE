@@ -1,0 +1,63 @@
+{
+  "lien": "Murol, lac Chambon & Saint-Nectaire",
+  "slug": "conciergerie-murol-lac-chambon",
+  "ordre": 2,
+  "publier": true,
+  "seo_titre": "Conciergerie Murol, lac Chambon et Saint-Nectaire | Écrin de Besse",
+  "seo_description": "Conciergerie pour locations saisonnières à Murol, Chambon-sur-Lac, Saint-Nectaire et Saint-Diéry : accueil, ménage, linge, courses, entretien et gestion Airbnb.",
+  "photo": "/assets/sancy.webp",
+  "photo_description": "Lac entouré de forêts dans le massif du Sancy",
+  "surtitre": "CONCIERGERIE À MUROL, LAC CHAMBON & SAINT-NECTAIRE",
+  "titre": "Au bord du lac Chambon,\n*votre location chouchoutée.*",
+  "intro": "Du château de Murol aux rives du lac Chambon, jusqu’aux villages de Saint-Nectaire et Saint-Diéry, la vallée accueille des vacanciers toute l’année, avec un vrai pic l’été. Écrin de Besse prend soin de votre gîte, de votre maison ou de votre appartement, et de vos voyageurs, à chaque rotation.",
+  "lieux": [
+    "Murol",
+    "Chambon-sur-Lac",
+    "Saint-Nectaire",
+    "Saint-Diéry",
+    "Saint-Victor-la-Rivière"
+  ],
+  "atouts_titre": "Une conciergerie qui se déplace\n*en dehors des stations.*",
+  "atouts": [
+    {
+      "titre": "Accueil des voyageurs",
+      "texte": "Remise des clés, présentation du logement et conseils sur la région : baignade au lac, randonnées, visite du château de Murol ou des caves de Saint-Nectaire."
+    },
+    {
+      "titre": "Ménage entre les séjours",
+      "texte": "En été, les rotations s’accélèrent. Nous assurons le ménage de fin de séjour et le changement du linge pour que chaque voyageur arrive dans un logement impeccable."
+    },
+    {
+      "titre": "Linge de maison",
+      "texte": "Pack linge par séjour ou par semaine : linge de lit, de douche et de cuisine, fourni et entretenu."
+    },
+    {
+      "titre": "Suivi de votre résidence secondaire",
+      "texte": "Visites de contrôle, vérification des équipements et mise en chauffe avant votre arrivée ou celle de vos voyageurs, à toute saison."
+    },
+    {
+      "titre": "Gestion Airbnb et réservations",
+      "texte": "Création ou optimisation de votre annonce, échanges avec les voyageurs et gestion du calendrier, en formule complète ou à la carte."
+    },
+    {
+      "titre": "Courses, décorations et dépannage",
+      "texte": "Courses du drive rangées avant l’arrivée, décorations pour les grandes occasions et interventions techniques avec notre partenaire multiservices."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Intervenez-vous à Murol et autour du lac Chambon ?",
+      "reponse": "Oui. Nous intervenons à Murol, Chambon-sur-Lac, Saint-Nectaire, Saint-Diéry et Saint-Victor-la-Rivière. Contrairement à beaucoup de conciergeries du secteur, nous nous déplaçons volontiers en dehors des stations."
+    },
+    {
+      "question": "Pouvez-vous gérer seulement le ménage et le linge ?",
+      "reponse": "Bien sûr. Vous pouvez garder la gestion de vos réservations et nous confier uniquement le ménage, le linge, l’accueil ou la remise des clés. Toutes nos prestations sont à la carte."
+    },
+    {
+      "question": "Gérez-vous les gîtes et les chambres d’hôtes ?",
+      "reponse": "Nous accompagnons les gîtes, maisons, chalets et appartements loués en saisonnier. Parlez-nous de votre logement : nous vous proposerons une formule adaptée."
+    }
+  ],
+  "cta_titre": "Un logement à Murol\nou au lac Chambon *à nous confier ?*",
+  "cta_texte": "Parlons de votre logement, de votre calendrier et de vos attentes. Laetitia vous répond rapidement."
+}

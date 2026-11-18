@@ -13,9 +13,16 @@ const data = {};
 for (const file of fs.readdirSync(path.join(ROOT, 'content'))) {
   if (file.endsWith('.json')) data[path.basename(file, '.json')] = JSON.parse(read(`content/${file}`));
 }
+// Pages par secteur (référencement local), modifiables dans l'admin
+data.zones = fs.readdirSync(path.join(ROOT, 'content/zones')).filter(f => f.endsWith('.json'))
+  .map(f => JSON.parse(read(`content/zones/${f}`))).filter(z => z.slug && z.publier !== false);
 
-const { render, toOptimize, strip, SITE } = setup(Handlebars);
-let html = render(read('src/page.hbs'), data, read('src/icons.html'));
+const partials = {};
+for (const f of fs.readdirSync(path.join(ROOT, 'src/partials'))) partials[path.basename(f, '.hbs')] = read(`src/partials/${f}`);
+const { render, renderZone, toOptimize, strip, SITE } = setup(Handlebars, { partials });
+const icons = read('src/icons.html');
+let html = render(read('src/page.hbs'), data, icons);
+const zonePages = data.zones.map(z => ({ slug: z.slug, html: renderZone(read('src/zone.hbs'), data, icons, z) }));
 
 // ---------- Copie des fichiers statiques ----------
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -23,11 +30,15 @@ fs.mkdirSync(DIST, { recursive: true });
 const copy = (src, dest) => fs.cpSync(path.join(ROOT, src), path.join(DIST, dest || src), { recursive: true });
 ['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js', 'google41e7d606cc4d3619.html'].forEach(f => copy(f));
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
+for (const z of zonePages) {
+  fs.mkdirSync(path.join(DIST, z.slug), { recursive: true });
+  fs.writeFileSync(path.join(DIST, z.slug, 'index.html'), z.html);
+}
 
 // ---------- Référencement : robots.txt, sitemap.xml, llms.txt ----------
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${SITE}/sitemap.xml\n`);
-fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>\n</urlset>\n`);
+fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>\n${data.zones.map(z => `  <url><loc>${SITE}/${z.slug}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>\n`).join('')}</urlset>\n`);
 {
   const r = data.reglages, a = data.accueil, t = data.tarifs || {}, f = data.faq || {}, s = data.sancy || {};
   const lines = [
@@ -45,6 +56,8 @@ fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="
     `- ${strip(t.note)}`, '',
     `## Questions fréquentes`,
     ...(f.questions || []).flatMap(q => [`### ${strip(q.question)}`, strip(q.reponse), '']),
+    `## Pages par secteur`,
+    ...data.zones.map(z => `- [Conciergerie ${strip(z.lien)}](${SITE}/${z.slug}/) : ${strip(z.seo_description)}`), '',
     `## Contact`,
     `- Téléphone : ${r.telephone}`, `- E-mail : ${r.email}`, `- Site : ${SITE}/`, `- Demande de devis : ${SITE}/#contact`, ''
   ];
@@ -56,7 +69,7 @@ const pv = path.join(DIST, 'admin/preview');
 fs.mkdirSync(pv, { recursive: true });
 fs.copyFileSync(path.join(ROOT, 'src/helpers.js'), path.join(pv, 'helpers.js'));
 fs.copyFileSync(require.resolve('handlebars/dist/handlebars.min.js'), path.join(pv, 'handlebars.min.js'));
-fs.writeFileSync(path.join(pv, 'bundle.json'), JSON.stringify({ template: read('src/page.hbs'), icons: read('src/icons.html'), data }));
+fs.writeFileSync(path.join(pv, 'bundle.json'), JSON.stringify({ template: read('src/page.hbs'), zoneTemplate: read('src/zone.hbs'), partials, icons, data }));
 
 // ---------- Optimisation des photos ----------
 (async () => {

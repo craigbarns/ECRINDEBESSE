@@ -1,0 +1,62 @@
+{
+  "lien": "Super-Besse & Besse",
+  "slug": "conciergerie-super-besse",
+  "ordre": 1,
+  "publier": true,
+  "seo_titre": "Conciergerie Super-Besse et Besse : location saisonnière & Airbnb | Écrin de Besse",
+  "seo_description": "Votre conciergerie à Super-Besse et Besse-et-Saint-Anastaise : accueil des voyageurs, ménage, linge, mise en chauffe du chalet, courses et gestion Airbnb. Devis rapide.",
+  "photo": "/assets/chalet-hiver.webp",
+  "photo_description": "Chalet enneigé au crépuscule près de Super-Besse",
+  "surtitre": "CONCIERGERIE À SUPER-BESSE & BESSE",
+  "titre": "Votre location\nà Super-Besse,\n*entre de bonnes mains.*",
+  "intro": "Entre la station de Super-Besse et la cité médiévale de Besse-et-Saint-Anastaise, les séjours s’enchaînent au rythme des saisons : ski et raquettes l’hiver, randonnée, VTT et lacs l’été. Écrin de Besse s’occupe de votre logement sur place pour que chaque voyageur arrive dans une maison prête, chaude et accueillante.",
+  "lieux": [
+    "Super-Besse",
+    "Besse-et-Saint-Anastaise",
+    "Lac Pavin",
+    "Vassivière"
+  ],
+  "atouts_titre": "Ce que nous faisons\n*pour votre location à Super-Besse.*",
+  "atouts": [
+    {
+      "titre": "Accueil et départ des voyageurs",
+      "texte": "Remise des clés en main propre, présentation du logement, état des lieux de sortie. Un vrai visage local pour vos voyageurs, même tard le soir après la route."
+    },
+    {
+      "titre": "Mise en chauffe avant l’arrivée",
+      "texte": "En altitude, une maison froide gâche une arrivée. Nous passons lancer le chauffage avant chaque séjour pour que vos voyageurs trouvent un chalet déjà bien chaud."
+    },
+    {
+      "titre": "Ménage et linge de maison",
+      "texte": "Ménage de fin de séjour, linge de lit et de toilette fourni et changé, réassort des consommables : le logement est prêt pour la rotation suivante, même en pleine saison de ski."
+    },
+    {
+      "titre": "Gestion de votre annonce Airbnb",
+      "texte": "Création ou optimisation de l’annonce, échanges avec les voyageurs et suivi des réservations, en formule complète ou à la carte."
+    },
+    {
+      "titre": "Courses rangées et décorations",
+      "texte": "Vos voyageurs commandent au drive, nous rangeons tout dans le réfrigérateur et les placards. Et pour Noël ou un anniversaire, nous décorons le chalet."
+    },
+    {
+      "titre": "Entretien et dépannage",
+      "texte": "Plomberie, chauffage, petits travaux : nous organisons l’intervention d’un partenaire multiservices avant, pendant ou après le séjour."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Intervenez-vous à la station de Super-Besse comme dans le bourg de Besse ?",
+      "reponse": "Oui. Nous intervenons dans les résidences et chalets de la station de Super-Besse comme dans le bourg de Besse-et-Saint-Anastaise et ses hameaux, ainsi que dans les villages alentour."
+    },
+    {
+      "question": "Que se passe-t-il en cas de neige ou de souci pendant le séjour ?",
+      "reponse": "Nous sommes sur place. Un problème de chauffage, d’eau chaude ou d’équipement ? Nous organisons rapidement une intervention avec notre partenaire multiservices, pour que le séjour se poursuive sereinement."
+    },
+    {
+      "question": "Combien coûte une conciergerie à Super-Besse ?",
+      "reponse": "La gestion locative complète démarre à 18 % des locations. Les prestations à l’unité commencent à 65 € pour l’accueil des voyageurs, 40 € pour le ménage et 32 € pour la mise en chauffe. Nous vous remettons un devis personnalisé selon votre logement."
+    }
+  ],
+  "cta_titre": "Un logement à Super-Besse\nou à Besse *à nous confier ?*",
+  "cta_texte": "Parlons de votre logement, de votre calendrier et de vos attentes. Laetitia vous répond rapidement."
+}

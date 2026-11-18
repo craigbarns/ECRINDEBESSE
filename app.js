@@ -38,7 +38,20 @@
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
   }
 
+  // Boîtes de dialogue (présentes sur toutes les pages)
+  document.querySelectorAll('[data-dialog]').forEach(button => button.addEventListener('click', () => {
+    document.getElementById(button.dataset.dialog)?.showModal();
+  }));
+  const yearEl = $('#year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+  document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      const bounds = dialog.getBoundingClientRect();
+      if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+    });
+  });
   const form = $('#contact-form');
+  if (!form) return;
   form.querySelector('[type="submit"]').disabled = false;
   const updateProfile = () => {
     const traveller = form.elements.profil.value === 'voyageur';
@@ -52,16 +65,6 @@
     updateProfile();
   }));
 
-  document.querySelectorAll('[data-dialog]').forEach(button => button.addEventListener('click', () => {
-    document.getElementById(button.dataset.dialog).showModal();
-  }));
-  document.querySelectorAll('dialog').forEach(dialog => {
-    dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => {
-      const bounds = dialog.getBoundingClientRect();
-      if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
-    });
-  });
 
   form.addEventListener('submit', event => {
     event.preventDefault();

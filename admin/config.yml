@@ -238,3 +238,46 @@ collections:
           - { label: "Bouton du menu", name: bouton_menu, widget: string }
           - { label: "Bouton d'appel (mobile)", name: barre_appel, widget: string }
           - { label: "Mentions légales", name: mentions_legales, widget: text, hint: "Raison sociale, adresse, SIRET, responsable de publication, hébergeur (Netlify, Inc., 512 2nd Street, San Francisco, CA 94107, USA)." }
+
+  - name: zones
+    label: "Pages par secteur"
+    label_singular: "page de secteur"
+    description: "Une page par secteur aide Google à vous trouver quand on cherche « conciergerie + nom de la ville ». Écrivez un contenu propre à chaque lieu."
+    folder: content/zones
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: lien
+    slug: "{{fields.slug}}"
+    summary: "📍  {{fields.lien}}"
+    fields:
+      - { label: "Nom du secteur (court)", name: lien, widget: string, hint: "Ex. « Super-Besse & Besse ». Apparaît dans les liens et le fil d'Ariane." }
+      - { label: "Adresse de la page", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Minuscules, chiffres et tirets uniquement"], hint: "Ex. conciergerie-super-besse → ecrindebesse.fr/conciergerie-super-besse/. Évitez de la changer une fois publiée." }
+      - { label: "Ordre d'affichage", name: ordre, widget: number, value_type: int, default: 9 }
+      - { label: "Page publiée", name: publier, widget: boolean, default: true, required: false }
+      - { label: "Titre Google (60 caractères environ)", name: seo_titre, widget: string }
+      - { label: "Description Google (150 caractères environ)", name: seo_description, widget: text }
+      - { label: "Photo", name: photo, widget: image, hint: "Photo en paysage, idéalement du secteur." }
+      - { label: "Description de la photo", name: photo_description, widget: string }
+      - { label: "Titre principal (lu par Google)", name: surtitre, widget: string, hint: "Ex. CONCIERGERIE À MUROL & AU LAC CHAMBON" }
+      - { label: "Grand slogan", name: titre, widget: text, hint: "Un retour à la ligne crée un saut de ligne ; *étoiles* = italique doré." }
+      - { label: "Texte de présentation", name: intro, widget: text, hint: "Parlez du lieu et de ce que vous y faites. Une ligne vide = nouveau paragraphe." }
+      - { label: "Communes et lieux", name: lieux, widget: list, field: { label: Lieu, name: item, widget: string } }
+      - { label: "Titre des prestations", name: atouts_titre, widget: text }
+      - label: "Prestations"
+        name: atouts
+        widget: list
+        summary: "{{fields.titre}}"
+        fields:
+          - { label: Titre, name: titre, widget: string }
+          - { label: Texte, name: texte, widget: text }
+      - label: "Questions fréquentes"
+        name: faq
+        widget: list
+        summary: "{{fields.question}}"
+        fields:
+          - { label: Question, name: question, widget: string }
+          - { label: "Réponse", name: reponse, widget: text }
+      - { label: "Appel à l'action · titre", name: cta_titre, widget: text }
+      - { label: "Appel à l'action · texte", name: cta_texte, widget: text }

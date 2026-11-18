@@ -45,13 +45,33 @@
       data[name] = withAssets(this.props.entry.get('data').toJS(), this.props.getAsset);
       let html = '';
       try {
-        const { render } = window.EcrinHelpers(window.Handlebars, { keepUploads: true });
+        const { render } = window.EcrinHelpers(window.Handlebars, { keepUploads: true, partials: bundle.partials });
         html = render(bundle.template, data, bundle.icons);
       } catch (e) { return h('p', { style: { padding: '40px' } }, 'Aperçu indisponible : ' + e.message); }
       const body = (html.split(/<body[^>]*>/)[1] || html).split('</body>')[0].replace(/<script[\s\S]*?<\/script>/g, '');
       return h('div', { className: 'ecrin-preview', dangerouslySetInnerHTML: { __html: body } });
     }
   });
+
+  // Aperçu des pages de secteur
+  const ZonePreview = createClass({
+    getInitialState() { return { loaded: !!bundle }; },
+    componentDidMount() { if (!bundle) ready.then(() => this.setState({ loaded: true })); },
+    render() {
+      if (!bundle) return h('p', { style: { fontFamily: 'sans-serif', padding: '40px', color: '#63685e' } }, 'Chargement de l’aperçu…');
+      const zone = withAssets(this.props.entry.get('data').toJS(), this.props.getAsset);
+      const data = Object.assign({}, bundle.data);
+      data.zones = (data.zones || []).filter(z => z.slug !== zone.slug).concat([zone]);
+      let html = '';
+      try {
+        const { renderZone } = window.EcrinHelpers(window.Handlebars, { keepUploads: true, partials: bundle.partials });
+        html = renderZone(bundle.zoneTemplate, data, bundle.icons, zone);
+      } catch (e) { return h('p', { style: { padding: '40px' } }, 'Aperçu indisponible : ' + e.message); }
+      const body = (html.split(/<body[^>]*>/)[1] || html).split('</body>')[0].replace(/<script[\s\S]*?<\/script>/g, '');
+      return h('div', { className: 'ecrin-preview', dangerouslySetInnerHTML: { __html: body } });
+    }
+  });
+  CMS.registerPreviewTemplate('zones', ZonePreview);
 
   CMS.registerPreviewStyle('/styles.css');
   CMS.registerPreviewStyle('/upgrade.css');

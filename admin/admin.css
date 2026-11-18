@@ -80,8 +80,3 @@ body{background:var(--eb-cream)!important;font-family:Manrope,'Segoe UI',sans-se
 .eb-links .eb-site:hover{background:#ecd5b1}
 [class*="AppHeaderSiteLink"]{display:none!important}
 @media(max-width:800px){.eb-links a:first-child{display:none}}
-/* Une seule collection : on masque la colonne de gauche */
-[class*="CollectionContainer"]>[class*="SidebarContainer"]{display:none!important}
-[class*="CollectionContainer"]{display:block!important;max-width:860px;margin:0 auto!important;padding:0 20px}
-[class*="CollectionMain"]{padding-left:0!important;margin:0!important;width:100%!important}
-[class*="ViewControlsSection"]{display:none!important}

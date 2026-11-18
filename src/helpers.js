@@ -41,8 +41,10 @@
       num: (i) => String(i + 1).padStart(2, '0'),
       add1: (i) => i + 1,
       delay: (i) => (i * 0.12).toFixed(2),
-      pick: (i, ...o) => o.slice(0, -1)[i % (o.length - 1)]
+      pick: (i, ...o) => o.slice(0, -1)[i % (o.length - 1)],
+      lt: (a, b) => a < b
     });
+    Object.entries(opts.partials || {}).forEach(([name, tpl]) => Handlebars.registerPartial(name, tpl));
 
     const typo = (html) => html.split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>)/).map(part =>
       part.startsWith('<') ? part : part.replace(/ ([?!:;»])/g, '&nbsp;$1').replace(/« /g, '«&nbsp;')
@@ -82,11 +84,34 @@
       return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
     };
 
+    const zonesOf = (data) => (data.zones || []).slice().sort((a, b) => (a.ordre || 99) - (b.ordre || 99));
+
+    // Page d'un secteur (référencement local)
+    const renderZone = (template, data, icons, zone) => {
+      const zones = zonesOf(data);
+      const lieux = (zone.lieux || []).map(l => ({ '@type': 'City', name: OFFICIEL[l] || l }));
+      const url = SITE + '/' + zone.slug + '/';
+      const graph = [
+        { '@type': 'Service', '@id': url + '#service', name: strip(zone.surtitre).toLowerCase().replace(/^./, c => c.toUpperCase()),
+          serviceType: 'Conciergerie de location saisonnière', description: strip(zone.seo_description), url,
+          provider: { '@type': 'LocalBusiness', '@id': SITE + '/#conciergerie', name: 'Écrin de Besse', url: SITE + '/' }, areaServed: lieux },
+        { '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE + '/' },
+          { '@type': 'ListItem', position: 2, name: strip(zone.lien), item: url }] }
+      ];
+      if ((zone.faq || []).length) graph.push({ '@type': 'FAQPage', mainEntity: zone.faq.map(q => ({
+        '@type': 'Question', name: strip(q.question), acceptedAnswer: { '@type': 'Answer', text: strip(q.reponse) } })) });
+      const ctx = Object.assign({}, data, { icons, site_url: SITE, base: '/', zone, zones,
+        others: zones.filter(z => z.slug !== zone.slug),
+        jsonld: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c') });
+      return typo(Handlebars.compile(template)(ctx));
+    };
+
     // Assemble la page complète à partir des contenus
     const render = (template, data, icons) => {
       const occ = (data.occasions && data.occasions.liste) || [];
       const ctx = Object.assign({}, data, {
-        icons, site_url: SITE, jsonld: jsonld(data),
+        icons, site_url: SITE, base: '', zones: zonesOf(data), jsonld: jsonld(data),
         occasionsJson: JSON.stringify(occ.map(o => ({
           word: o.mot || '', img: img(o.photo), eyebrow: o.surtitre || '', title: inline(o.titre), text: inline(o.texte), list: (o.points || []).map(esc)
         }))).replace(/</g, '\\u003c')
@@ -94,6 +119,6 @@
       return typo(Handlebars.compile(template)(ctx));
     };
 
-    return { render, inline, paragraphs, img, toOptimize, strip, SITE };
+    return { render, renderZone, inline, paragraphs, img, toOptimize, strip, SITE };
   };
 });

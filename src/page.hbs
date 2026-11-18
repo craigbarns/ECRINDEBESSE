@@ -20,29 +20,14 @@
   <meta name="geo.region" content="FR-63">
   <meta name="geo.placename" content="Besse-et-Saint-Anastaise">
   <script type="application/ld+json">{{{jsonld}}}</script>
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="{{img accueil.photo}}">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/upgrade.css">
-  <script>if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash))location.replace('/admin/'+location.hash)</script>
-  <script src="/app.js" defer></script>
-  <script src="/upgrade.js" defer></script>
+{{> assets}}
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   {{{icons}}}
 
-  <header class="header" id="haut">
-    <div class="header-inner wrap">
-      <a class="brand" href="#haut" aria-label="Écrin de Besse, accueil"><img src="{{img reglages.logo}}" alt="Écrin de Besse Conciergerie" width="297" height="137"></a>
-      <nav class="nav" id="navigation" aria-label="Navigation principale">
-        <a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#tarifs">Tarifs</a><a href="#histoire">Notre histoire</a>
-        <a class="button button-small button-gold" href="#contact">{{reglages.bouton_menu}} <svg><use href="#i-arrow"/></svg></a>
-      </nav>
-      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
-    </div>
-  </header>
+{{> header}}
 
   <main id="contenu">
     <section class="hero" aria-labelledby="hero-title">
@@ -133,7 +118,7 @@
       </div>
     </section>
 
-    <section class="landscape" id="sancy"><img src="{{img sancy.photo}}" alt="Chalet sous la neige dans le massif du Sancy" width="2400" height="1400" loading="lazy" data-parallax><div class="landscape-shade"></div><div class="wrap landscape-content reveal"><p class="eyebrow light">{{sancy.surtitre}}</p><h2>{{{t sancy.titre}}}</h2><p>{{{t sancy.texte}}}</p><div class="locations">{{#each sancy.lieux}}<span>{{this}}</span>{{/each}}</div><small>{{sancy.note}}</small></div></section>
+    <section class="landscape" id="sancy"><img src="{{img sancy.photo}}" alt="Chalet sous la neige dans le massif du Sancy" width="2400" height="1400" loading="lazy" data-parallax><div class="landscape-shade"></div><div class="wrap landscape-content reveal"><p class="eyebrow light">{{sancy.surtitre}}</p><h2>{{{t sancy.titre}}}</h2><p>{{{t sancy.texte}}}</p><div class="locations">{{#each sancy.lieux}}<span>{{this}}</span>{{/each}}</div><small>{{sancy.note}}</small>{{#if zones}}<div class="zone-links">{{#each zones}}<a href="/{{slug}}/">Conciergerie {{lien}} <svg><use href="#i-arrow"/></svg></a>{{/each}}</div>{{/if}}</div></section>
 
     <section class="story section wrap" id="histoire"><div class="story-photo reveal"><img src="{{img histoire.photo}}" alt="Paysage du Sancy en Auvergne, lac et forêts" width="680" height="800" loading="lazy"><img class="story-seal" src="{{img reglages.sceau_vert}}" alt="Logo Écrin de Besse Conciergerie" width="520" height="520" loading="lazy"><span class="image-label">{{histoire.legende}}</span></div><div class="story-content reveal"><p class="eyebrow">{{histoire.surtitre}}</p><h2>{{{t histoire.titre}}}</h2>{{{p histoire.texte}}}{{#if histoire.citation}}<blockquote>{{{t histoire.citation}}}</blockquote>{{/if}}<div class="signature">{{histoire.signature}}<span>{{histoire.signature_sous}}</span></div></div></section>
 
@@ -168,15 +153,6 @@
       </form>
     </div></section>
   </main>
-  <footer class="footer">
-    <div class="wrap footer-hero"><img src="{{img reglages.sceau_clair}}" alt="" width="520" height="520" loading="lazy" class="footer-seal"><p class="footer-word">{{contact.pied_nom}}</p><p class="footer-tag">{{contact.pied_slogan}}</p></div>
-    <div class="wrap footer-top"><nav aria-label="Liens du pied de page"><a href="#proprietaires">Propriétaires</a><a href="#voyageurs">Voyageurs</a><a href="#occasions">Occasions</a><a href="#entretien">Entretien</a><a href="#tarifs">Tarifs</a><a href="#contact">Contact</a></nav><a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a><a href="mailto:{{reglages.email}}">{{reglages.email}}</a><a href="#haut" class="back-top">Retour en haut <span aria-hidden="true">↑</span></a></div>
-    <div class="wrap footer-bottom"><span>© <span id="year">2026</span> {{contact.pied_nom}}</span><span>{{contact.pied_mention}}</span><div><button data-dialog="legal-dialog">Informations légales</button><button data-dialog="privacy-dialog">Confidentialité</button></div></div>
-  </footer>
-  <div class="mobile-contact"><a href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg> {{reglages.barre_appel}}</a><a href="#contact">Mon projet <svg><use href="#i-arrow"/></svg></a></div>
-
-  <dialog id="request-dialog" class="dialog" aria-labelledby="request-title"><button class="dialog-close" aria-label="Fermer la demande" data-close>×</button><p class="eyebrow">UN PREMIER PAS, TOUT SIMPLEMENT</p><h2 id="request-title">Votre demande<br>est <em>prête.</em></h2><p>Relisez votre message, puis ouvrez votre messagerie pour l’envoyer à <strong>{{reglages.email}}</strong>.</p><label for="message-preview">Votre message</label><textarea id="message-preview" readonly rows="9"></textarea><a class="button button-green" id="send-email" href="mailto:{{reglages.email}}">Ouvrir ma messagerie <svg><use href="#i-arrow"/></svg></a><button class="copy-button" id="copy-message">Copier le message</button><p id="copy-status" role="status" aria-live="polite"></p><p class="form-note">Le message n’est pas encore envoyé. Si votre messagerie ne s’ouvre pas, copiez le texte et envoyez-le à l’adresse ci-dessus.</p></dialog>
-  <dialog id="privacy-dialog" class="dialog" aria-labelledby="privacy-title"><button class="dialog-close" aria-label="Fermer la confidentialité" data-close>×</button><p class="eyebrow">VOS INFORMATIONS</p><h2 id="privacy-title">Confidentialité</h2><p>Ce site n’utilise ni outil de suivi publicitaire, ni mesure d’audience, ni cookie applicatif. Les polices et images sont hébergées avec le site.</p><p>Le formulaire prépare un e-mail dans votre navigateur. Son contenu n’est pas transmis à un serveur de formulaire et n’est pas enregistré dans le stockage du navigateur. Vous décidez de l’envoyer depuis votre propre messagerie.</p><p>Pour toute question concernant un message adressé à Écrin de Besse, écrivez à <a href="mailto:{{reglages.email}}">{{reglages.email}}</a>.</p></dialog>
-  <dialog id="legal-dialog" class="dialog" aria-labelledby="legal-title"><button class="dialog-close" aria-label="Fermer les informations légales" data-close>×</button><p class="eyebrow">ÉCRIN DE BESSE</p><h2 id="legal-title">Informations légales</h2><p>Contact : <a href="mailto:{{reglages.email}}">{{reglages.email}}</a><br>Téléphone : <a href="tel:{{tel reglages.telephone}}">{{reglages.telephone}}</a></p>{{{p reglages.mentions_legales}}}</dialog>
+{{> footer}}
 </body>
 </html>

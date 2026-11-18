@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1c3029">
+  <title>{{zone.seo_titre}}</title>
+  <meta name="description" content="{{zone.seo_description}}">
+  <meta property="og:title" content="{{zone.seo_titre}}">
+  <meta property="og:description" content="{{zone.seo_description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="{{site_url}}/assets/og-image.jpg">
+  <meta property="og:url" content="{{site_url}}/{{zone.slug}}/">
+  <meta property="og:site_name" content="Écrin de Besse">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{site_url}}/{{zone.slug}}/">
+  <meta name="geo.region" content="FR-63">
+  <script type="application/ld+json">{{{jsonld}}}</script>
+{{> assets}}
+</head>
+<body class="local-page">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  {{{icons}}}
+{{> header}}
+
+  <main id="contenu">
+    <section class="hero hero-local" aria-labelledby="hero-title">
+      <img class="hero-image" src="{{img zone.photo}}" alt="{{zone.photo_description}}" width="2400" height="1400" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <canvas class="snow" aria-hidden="true"></canvas>
+      <div class="hero-content wrap">
+        <nav class="breadcrumb hero-in" style="--d:.05s" aria-label="Fil d’Ariane"><a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>{{zone.lien}}</span></nav>
+        <h1 class="eyebrow light hero-in" id="hero-title" style="--d:.1s"><span class="short-line"></span> {{zone.surtitre}}</h1>
+        <p class="hero-title">{{{lines zone.titre}}}</p>
+        <div class="hero-actions hero-in" style="--d:.8s"><a class="button button-gold" href="/#contact">Demander un devis <svg><use href="#i-arrow"/></svg></a><a class="button button-outline" href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg> {{reglages.telephone}}</a></div>
+      </div>
+    </section>
+
+    <section class="section wrap local-intro">
+      <div class="reveal"><p class="eyebrow">{{zone.surtitre}}</p>{{{p zone.intro}}}</div>
+      <div class="reveal"><p class="local-label">Nous intervenons notamment à</p><div class="locations dark">{{#each zone.lieux}}<span>{{this}}</span>{{/each}}</div><p class="local-small">Et dans les villages alentour. <a href="/#sancy">Voir toute notre zone</a></p></div>
+    </section>
+
+    <section class="owners section"><div class="wrap">
+      <div class="center-heading reveal"><p class="eyebrow">NOS PRESTATIONS</p><h2>{{{t zone.atouts_titre}}}</h2></div>
+      <div class="local-grid">{{#each zone.atouts}}<article class="local-card reveal" style="--d:{{delay @index}}s"><span class="service-num">{{num @index}}</span><h3>{{titre}}</h3>{{{p texte}}}</article>{{/each}}</div>
+    </div></section>
+
+    <section class="pricing section"><div class="wrap">
+      <div class="section-heading reveal"><div><p class="eyebrow">{{tarifs.surtitre}}</p><h2>{{{t tarifs.titre}}}</h2></div><p>{{{t tarifs.intro}}}</p></div>
+      <div class="price-grid">{{#each tarifs.prestations}}{{#if (lt @index 6)}}<article class="price-card reveal{{#if @first}} price-featured{{/if}}" style="--d:{{delay @index}}s"><span class="price-cat">{{categorie}}</span><h3>{{nom}}</h3><p class="price">{{#if prefixe}}<small>{{prefixe}}</small> {{/if}}{{prix}}</p><p class="price-detail">{{{t detail}}}</p></article>{{/if}}{{/each}}</div>
+      <div class="price-foot reveal"><p>{{{t tarifs.note}}}</p><a class="button button-green" href="/#tarifs">Voir tous les tarifs <svg><use href="#i-arrow"/></svg></a></div>
+    </div></section>
+
+    <section class="faq section wrap"><div class="reveal"><p class="eyebrow">QUESTIONS FRÉQUENTES</p><h2>Vous vous posez<br><em>la question ?</em></h2><a href="/#contact" class="text-link">Nous sommes là pour en parler <svg><use href="#i-arrow"/></svg></a></div><div class="faq-list reveal">
+      {{#each zone.faq}}<details{{#if @first}} open{{/if}}><summary>{{{t question}}}<span class="plus"></span></summary>{{{p reponse}}}</details>
+      {{/each}}
+    </div></section>
+
+    <section class="contact section local-cta"><canvas class="snow snow-soft" aria-hidden="true"></canvas><div class="wrap local-cta-inner reveal">
+      <p class="eyebrow light">{{contact.surtitre}}</p><h2>{{{t zone.cta_titre}}}</h2><p>{{{t zone.cta_texte}}}</p>
+      <div class="hero-actions"><a class="button button-gold" href="/#contact">Demander un devis <svg><use href="#i-arrow"/></svg></a><a class="button button-outline" href="tel:{{tel reglages.telephone}}"><svg><use href="#i-phone"/></svg> {{reglages.telephone}}</a></div>
+      {{#if others}}<p class="local-others">Autres secteurs : {{#each others}}<a href="/{{slug}}/">{{lien}}</a>{{#unless @last}} · {{/unless}}{{/each}}</p>{{/if}}
+    </div></section>
+  </main>
+{{> footer}}
+</body>
+</html>

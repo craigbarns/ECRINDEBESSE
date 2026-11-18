@@ -108,7 +108,7 @@
     new IntersectionObserver(entries => {
       entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
       bar.classList.toggle('is-hidden', visible.size > 0);
-    }, { threshold: 0.15 }).observe(targets[0]);
+    }, { threshold: 0.15 }).observe(targets[0] || document.querySelector('.local-cta') || document.body);
     targets.slice(1).forEach(t => t && new IntersectionObserver(entries => {
       entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
       bar.classList.toggle('is-hidden', visible.size > 0);
