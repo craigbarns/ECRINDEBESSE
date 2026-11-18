@@ -8,8 +8,8 @@ backend:
     deleteMedia: "Suppression photo : {{path}}"
 
 locale: fr
-site_url: https://ecrindebesse.netlify.app
-display_url: https://ecrindebesse.netlify.app
+site_url: https://www.ecrindebesse.fr
+display_url: https://www.ecrindebesse.fr
 logo_url: /assets/sceau-vert.png
 media_folder: assets/uploads
 public_folder: /assets/uploads
