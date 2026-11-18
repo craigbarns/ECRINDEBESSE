@@ -1,0 +1,8 @@
+/* Aperçu dans l'admin : pas d'animations à chaque frappe */
+*,*:before,*:after{animation:none!important;transition:none!important}
+.hero h1 .line>span,.hero-in,.hero-badge{opacity:1!important;transform:none!important}
+.reveal{opacity:1!important;transform:none!important}
+.header{position:absolute!important}
+.snow,.scroll-progress,.mobile-contact{display:none!important}
+.hero-image{transform:none!important}
+html{scroll-behavior:auto!important}

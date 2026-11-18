@@ -10,20 +10,20 @@ backend:
 locale: fr
 site_url: https://www.ecrindebesse.fr
 display_url: https://www.ecrindebesse.fr
-logo_url: /assets/sceau-vert.png
+logo:
+  src: /assets/sceau-vert.png
+  show_in_header: false
 media_folder: assets/uploads
 public_folder: /assets/uploads
 publish_mode: simple
-editor:
-  preview: false
 
 collections:
   - name: pages
-    label: "Contenu du site"
-    editor: { preview: false }
+    label: "Mon site"
+    description: "Choisissez la partie du site à modifier. L’aperçu à droite vous montre le résultat en direct."
     files:
       - name: accueil
-        label: "1 · Accueil & bienvenue"
+        label: "🏔️  Accueil & bienvenue"
         file: content/accueil.json
         fields:
           - { label: "Grande photo d'accueil", name: photo, widget: image, hint: &photo_aide "Photo en paysage de préférence, idéalement 2000 px de large. Elle est automatiquement allégée pour le web." }
@@ -48,7 +48,7 @@ collections:
               - { label: Texte, name: texte, widget: string }
 
       - name: proprietaires
-        label: "2 · Propriétaires"
+        label: "🔑  Propriétaires"
         file: content/proprietaires.json
         fields:
           - { label: Photo, name: photo, widget: image, hint: *photo_aide }
@@ -67,7 +67,7 @@ collections:
           - { label: "Texte du bouton", name: bouton, widget: string }
 
       - name: voyageurs
-        label: "3 · Voyageurs"
+        label: "🧳  Voyageurs"
         file: content/voyageurs.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -92,7 +92,7 @@ collections:
           - { label: "Note sous les cartes", name: note, widget: string }
 
       - name: occasions
-        label: "4 · Décorations à thème"
+        label: "🎄  Décorations à thème"
         file: content/occasions.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -115,7 +115,7 @@ collections:
               - { label: "Points inclus", name: points, widget: list, field: { label: Point, name: item, widget: string } }
 
       - name: entretien
-        label: "5 · Entretien & dépannage"
+        label: "🔧  Entretien & dépannage"
         file: content/entretien.json
         fields:
           - { label: Photo, name: photo, widget: image, hint: *photo_aide }
@@ -139,7 +139,7 @@ collections:
           - { label: "Texte du bouton", name: bouton, widget: string }
 
       - name: sancy
-        label: "6 · Le Sancy"
+        label: "🌲  Le Sancy & communes"
         file: content/sancy.json
         fields:
           - { label: "Photo de fond", name: photo, widget: image, hint: *photo_aide }
@@ -150,7 +150,7 @@ collections:
           - { label: "Petite note", name: note, widget: string }
 
       - name: histoire
-        label: "7 · Notre histoire"
+        label: "❤️  Notre histoire"
         file: content/histoire.json
         fields:
           - { label: Photo, name: photo, widget: image, hint: "Photo en portrait (verticale) de préférence." }
@@ -163,7 +163,7 @@ collections:
           - { label: "Sous la signature", name: signature_sous, widget: string }
 
       - name: etapes
-        label: "8 · Comment ça marche"
+        label: "✨  Comment ça marche"
         file: content/etapes.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -176,7 +176,7 @@ collections:
               - { label: Texte, name: texte, widget: text }
 
       - name: faq
-        label: "9 · Questions fréquentes"
+        label: "💬  Questions fréquentes"
         file: content/faq.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -191,7 +191,7 @@ collections:
               - { label: "Réponse", name: reponse, widget: text, hint: *texte_aide }
 
       - name: tarifs
-        label: "9 bis · Nos tarifs"
+        label: "💶  Nos tarifs"
         file: content/tarifs.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -212,7 +212,7 @@ collections:
           - { label: "Texte du bouton", name: bouton, widget: string }
 
       - name: contact
-        label: "10 · Contact & pied de page"
+        label: "✉️  Contact & pied de page"
         file: content/contact.json
         fields:
           - { label: Surtitre, name: surtitre, widget: string }
@@ -223,7 +223,7 @@ collections:
           - { label: "Mention (tout en bas)", name: pied_mention, widget: string }
 
       - name: reglages
-        label: "⚙️ Coordonnées, logo & référencement"
+        label: "⚙️  Coordonnées, logo & mentions légales"
         file: content/reglages.json
         fields:
           - { label: "Téléphone", name: telephone, widget: string, hint: "Utilisé partout sur le site (boutons d'appel inclus)." }
