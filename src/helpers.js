@@ -48,11 +48,45 @@
       part.startsWith('<') ? part : part.replace(/ ([?!:;»])/g, '&nbsp;$1').replace(/« /g, '«&nbsp;')
         .replace(/(\d) (%|€|h\b|m2|pers)/g, '$1&nbsp;$2').replace(/(\d) (\d{3})/g, '$1&nbsp;$2')).join('');
 
+    const SITE = opts.siteUrl || 'https://ecrindebesse.fr';
+    const strip = (s) => String(s || '').replace(/\*/g, '').replace(/\s*\n\s*/g, ' ').trim();
+    const OFFICIEL = { 'Besse': 'Besse-et-Saint-Anastaise', 'Lac Chambon': 'Chambon-sur-Lac' };
+
+    // Données structurées (Google et moteurs de réponse IA)
+    const jsonld = (data) => {
+      const r = data.reglages || {}, faq = (data.faq && data.faq.questions) || [];
+      const lieux = (data.sancy && data.sancy.lieux) || [];
+      const region = { '@type': 'AdministrativeArea', name: 'Puy-de-Dôme, Auvergne' };
+      const areas = [{ '@type': 'AdministrativeArea', name: 'Massif du Sancy' }].concat(lieux.map(l => (
+        l === 'Super-Besse' ? { '@type': 'Place', name: 'Super-Besse (station de ski)', containedInPlace: { '@type': 'City', name: 'Besse-et-Saint-Anastaise' } }
+          : { '@type': 'City', name: OFFICIEL[l] || l, containedInPlace: region })));
+      const offers = ((data.tarifs && data.tarifs.prestations) || []).map(p => {
+        const o = { '@type': 'Offer', itemOffered: { '@type': 'Service', name: strip(p.nom), description: strip(p.detail) } };
+        const m = String(p.prix || '').replace(/\s/g, '').match(/^(\d+(?:[.,]\d+)?)€$/);
+        if (m) o.priceSpecification = Object.assign({ '@type': 'PriceSpecification', priceCurrency: 'EUR' },
+          /d[eè]s|partir/i.test(p.prefixe || '') ? { minPrice: +m[1].replace(',', '.') } : { price: +m[1].replace(',', '.') });
+        return o;
+      });
+      const tel = String(r.telephone || '').replace(/[^\d]/g, '');
+      const graph = [
+        { '@type': 'LocalBusiness', '@id': SITE + '/#conciergerie', name: 'Écrin de Besse', alternateName: 'Écrin de Besse Conciergerie',
+          description: strip(r.seo_description), url: SITE + '/', logo: SITE + '/assets/sceau-vert.png', image: SITE + '/assets/og-image.jpg',
+          telephone: tel.startsWith('0') ? '+33' + tel.slice(1) : tel, email: r.email, priceRange: '€€', currenciesAccepted: 'EUR',
+          founder: { '@type': 'Person', name: 'Laetitia Cayla' }, areaServed: areas, knowsLanguage: 'fr',
+          slogan: strip(data.contact && data.contact.pied_slogan),
+          hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Prestations de conciergerie et de location saisonnière', itemListElement: offers } },
+        { '@type': 'WebSite', '@id': SITE + '/#site', url: SITE + '/', name: 'Écrin de Besse', inLanguage: 'fr-FR', publisher: { '@id': SITE + '/#conciergerie' } }
+      ];
+      if (faq.length) graph.push({ '@type': 'FAQPage', '@id': SITE + '/#faq', mainEntity: faq.map(q => ({
+        '@type': 'Question', name: strip(q.question), acceptedAnswer: { '@type': 'Answer', text: strip(q.reponse) } })) });
+      return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+    };
+
     // Assemble la page complète à partir des contenus
     const render = (template, data, icons) => {
       const occ = (data.occasions && data.occasions.liste) || [];
       const ctx = Object.assign({}, data, {
-        icons,
+        icons, site_url: SITE, jsonld: jsonld(data),
         occasionsJson: JSON.stringify(occ.map(o => ({
           word: o.mot || '', img: img(o.photo), eyebrow: o.surtitre || '', title: inline(o.titre), text: inline(o.texte), list: (o.points || []).map(esc)
         }))).replace(/</g, '\\u003c')
@@ -60,6 +94,6 @@
       return typo(Handlebars.compile(template)(ctx));
     };
 
-    return { render, inline, paragraphs, img, toOptimize };
+    return { render, inline, paragraphs, img, toOptimize, strip, SITE };
   };
 });

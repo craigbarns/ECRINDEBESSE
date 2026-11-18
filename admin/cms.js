@@ -65,7 +65,7 @@
     const box = document.createElement('div');
     box.className = 'eb-links';
     box.innerHTML = '<a href="/admin/guide.html" target="_blank" rel="noopener">📖 Mode d’emploi</a>' +
-      '<a href="https://www.ecrindebesse.fr" target="_blank" rel="noopener" class="eb-site">Voir mon site ↗</a>';
+      '<a href="https://ecrindebesse.fr" target="_blank" rel="noopener" class="eb-site">Voir mon site ↗</a>';
     bar.prepend(box);
   };
   new MutationObserver(addLinks).observe(document.documentElement, { childList: true, subtree: true });

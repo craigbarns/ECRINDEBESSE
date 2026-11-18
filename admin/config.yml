@@ -8,8 +8,8 @@ backend:
     deleteMedia: "Suppression photo : {{path}}"
 
 locale: fr
-site_url: https://www.ecrindebesse.fr
-display_url: https://www.ecrindebesse.fr
+site_url: https://ecrindebesse.fr
+display_url: https://ecrindebesse.fr
 logo:
   src: /assets/sceau-vert.png
   show_in_header: false
@@ -28,8 +28,8 @@ collections:
         fields:
           - { label: "Grande photo d'accueil", name: photo, widget: image, hint: &photo_aide "Photo en paysage de préférence, idéalement 2000 px de large. Elle est automatiquement allégée pour le web." }
           - { label: "Description de la photo (pour Google et l'accessibilité)", name: photo_description, widget: string }
-          - { label: "Petit surtitre", name: surtitre, widget: string }
-          - { label: "Grand titre", name: titre, widget: text, hint: &titre_aide "Astuce : mettez des mots entre *étoiles* pour les écrire en italique doré. Un retour à la ligne crée un saut de ligne." }
+          - { label: "Titre principal (lu par Google)", name: surtitre, widget: string, hint: "Ce petit texte au-dessus du slogan est le titre principal pour Google : gardez-y « conciergerie » et le nom des villes." }
+          - { label: "Grand slogan", name: titre, widget: text, hint: &titre_aide "Astuce : mettez des mots entre *étoiles* pour les écrire en italique doré. Un retour à la ligne crée un saut de ligne." }
           - { label: "Texte sous le titre", name: intro, widget: text }
           - { label: "Bouton propriétaires", name: bouton_proprietaire, widget: string }
           - { label: "Bouton voyageurs", name: bouton_voyageur, widget: string }

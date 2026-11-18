@@ -14,7 +14,7 @@ for (const file of fs.readdirSync(path.join(ROOT, 'content'))) {
   if (file.endsWith('.json')) data[path.basename(file, '.json')] = JSON.parse(read(`content/${file}`));
 }
 
-const { render, toOptimize } = setup(Handlebars);
+const { render, toOptimize, strip, SITE } = setup(Handlebars);
 let html = render(read('src/page.hbs'), data, read('src/icons.html'));
 
 // ---------- Copie des fichiers statiques ----------
@@ -23,6 +23,33 @@ fs.mkdirSync(DIST, { recursive: true });
 const copy = (src, dest) => fs.cpSync(path.join(ROOT, src), path.join(DIST, dest || src), { recursive: true });
 ['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js', 'google41e7d606cc4d3619.html'].forEach(f => copy(f));
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
+
+// ---------- Référencement : robots.txt, sitemap.xml, llms.txt ----------
+const today = new Date().toISOString().slice(0, 10);
+fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${SITE}/sitemap.xml\n`);
+fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>\n</urlset>\n`);
+{
+  const r = data.reglages, a = data.accueil, t = data.tarifs || {}, f = data.faq || {}, s = data.sancy || {};
+  const lines = [
+    `# Écrin de Besse — Conciergerie`, '',
+    `> ${strip(r.seo_description)}`, '',
+    `Écrin de Besse est une conciergerie locale et indépendante pour propriétaires de résidences secondaires et de locations saisonnières (Airbnb, gîtes, chalets, appartements) et pour leurs voyageurs, autour de Super-Besse et Besse-et-Saint-Anastaise, dans le massif du Sancy (Puy-de-Dôme, Auvergne). Fondée par Laetitia et Rémy.`, '',
+    `## Zone d’intervention`, (s.lieux || []).map(l => `- ${l}`).join('\n'), `- ${strip(s.note)}`, '',
+    `## Prestations`,
+    ...(data.proprietaires.services || []).map(x => `- ${strip(x.titre)} : ${strip(x.texte)}`),
+    `- Courses au drive récupérées et rangées avant l’arrivée des voyageurs`,
+    `- Décorations à thème : ${(data.occasions.liste || []).map(o => strip(o.onglet)).join(', ')}`,
+    `- Entretien et dépannage avec un partenaire multiservices : ${(data.entretien.metiers || []).map(m => m.nom).join(', ')}`, '',
+    `## Tarifs indicatifs`,
+    ...(t.prestations || []).map(p => `- ${strip(p.nom)} : ${p.prefixe ? p.prefixe + ' ' : ''}${p.prix} (${strip(p.detail)})`),
+    `- ${strip(t.note)}`, '',
+    `## Questions fréquentes`,
+    ...(f.questions || []).flatMap(q => [`### ${strip(q.question)}`, strip(q.reponse), '']),
+    `## Contact`,
+    `- Téléphone : ${r.telephone}`, `- E-mail : ${r.email}`, `- Site : ${SITE}/`, `- Demande de devis : ${SITE}/#contact`, ''
+  ];
+  fs.writeFileSync(path.join(DIST, 'llms.txt'), lines.join('\n'));
+}
 
 // Fichiers pour l'aperçu en direct dans l'admin
 const pv = path.join(DIST, 'admin/preview');

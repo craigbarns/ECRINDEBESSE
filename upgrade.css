@@ -21,9 +21,9 @@ html{scroll-padding-top:84px}
 .hero-shade{background:radial-gradient(ellipse at 78% 60%,rgba(242,194,123,.16),transparent 45%),linear-gradient(90deg,rgba(13,26,22,.82) 0%,rgba(13,26,22,.45) 42%,rgba(13,26,22,.02) 72%),linear-gradient(0deg,rgba(12,24,21,.75),transparent 34%),linear-gradient(180deg,rgba(12,24,21,.55),transparent 22%)}
 .snow{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero-content,.hero-bottom,.hero-badge{z-index:1}
-.hero h1{font-size:clamp(54px,6.4vw,100px);line-height:1.02;letter-spacing:-3px;text-shadow:0 4px 40px rgba(0,0,0,.25)}
-.hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
-.hero h1 .line>span{display:inline-block;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.75,.2,1) forwards;animation-delay:var(--d)}
+.hero .hero-title{font-size:clamp(54px,6.4vw,100px);line-height:1.02;letter-spacing:-3px;text-shadow:0 4px 40px rgba(0,0,0,.25)}
+.hero .hero-title .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero .hero-title .line>span{display:inline-block;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.75,.2,1) forwards;animation-delay:var(--d)}
 .hero-in{opacity:0;transform:translateY(18px);animation:fadeup 1s ease forwards;animation-delay:var(--d)}
 @keyframes rise{to{transform:none}}
 @keyframes fadeup{to{opacity:1;transform:none}}
@@ -187,7 +187,7 @@ html{scroll-padding-top:84px}
   .nav{top:100%;background:rgba(22,40,34,.97);backdrop-filter:blur(14px)}
   .hero{height:100svh;min-height:620px}
   .hero-content{padding-top:76px}
-  .hero h1{letter-spacing:-1.8px}
+  .hero .hero-title{letter-spacing:-1.8px}
   .marquee span{font-size:20px}
   .occasion-panel{grid-template-columns:1fr}
   .occasion-media{min-height:320px}
@@ -217,11 +217,11 @@ html{scroll-padding-top:84px}
   .footer-hero{padding:70px 0 40px}
   .footer-top{flex-direction:column;align-items:flex-start}
   .intro-copy .lead{font-size:22px}
-  .hero h1{font-size:46px;letter-spacing:-1.4px}
+  .hero .hero-title{font-size:46px;letter-spacing:-1.4px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-image,.badge-text,.marquee-track,.story-seal,.cue-line:after{animation:none!important}
-  .hero h1 .line>span,.hero-in,.hero-badge{animation:none!important;transform:none!important;opacity:1!important}
+  .hero .hero-title .line>span,.hero-in,.hero-badge{animation:none!important;transform:none!important;opacity:1!important}
   .snow{display:none}
 }
 
@@ -276,7 +276,7 @@ html{scroll-padding-top:84px}
   .footer-top a{font-size:14px}
 }
 @media(max-width:380px){
-  .hero h1{font-size:41px}
+  .hero .hero-title{font-size:41px}
   .nav>a:not(.button){font-size:32px}
 }
 
@@ -310,3 +310,7 @@ html{scroll-padding-top:84px}
   .price-cat{font-size:9px;letter-spacing:1.4px}
   .price-featured{grid-column:span 2}
 }
+
+/* SEO : le titre principal (h1) est le surtitre ; le grand slogan reste identique visuellement */
+.hero .hero-title{font-family:var(--serif);font-weight:400}
+.hero h1.eyebrow{font-weight:600}

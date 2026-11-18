@@ -5,7 +5,15 @@
   "questions": [
     {
       "question": "Dans quels secteurs intervenez-vous ?",
-      "reponse": "Nous intervenons autour de Besse et Super-Besse : Murol, le lac Chambon, Saint-Nectaire, Saint-Diéry, Saint-Victor-la-Rivière, Picherande, Égliseneuve-d’Entraigues et les villages alentour. Contrairement à beaucoup de conciergeries du secteur, nous nous déplaçons aussi en dehors des stations. Contactez-nous avec l’adresse de votre logement : nous étudions chaque demande."
+      "reponse": "Nous intervenons autour de Super-Besse et Besse-et-Saint-Anastaise : Murol, le lac Chambon (Chambon-sur-Lac), Saint-Nectaire, Saint-Diéry, Saint-Victor-la-Rivière, Picherande, Égliseneuve-d’Entraigues et les villages alentour. Contrairement à beaucoup de conciergeries du secteur, nous nous déplaçons aussi en dehors des stations. Contactez-nous avec l’adresse de votre logement : nous étudions chaque demande."
+    },
+    {
+      "question": "Combien coûte une conciergerie à Super-Besse ?",
+      "reponse": "La gestion locative complète démarre à 18 % des locations (22 % en formule premium). Vous pouvez aussi choisir des prestations à l’unité : accueil des voyageurs dès 65 €, ménage dès 40 €, pack linge dès 18 €, mise en chauffe 32 €, courses au drive 25 €. Chaque logement étant différent, nous vous remettons un devis personnalisé."
+    },
+    {
+      "question": "Gérez-vous les locations Airbnb, Booking ou Abritel ?",
+      "reponse": "Oui. Nous créons ou optimisons votre annonce, gérons les échanges avec les voyageurs, l’accueil, le ménage, le linge et le suivi du logement. Vous pouvez nous confier la gestion complète ou seulement certaines prestations."
     },
     {
       "question": "Peut-on choisir une prestation ponctuelle ?",
