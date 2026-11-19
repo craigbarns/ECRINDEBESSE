@@ -28,7 +28,7 @@ const zonePages = data.zones.map(z => ({ slug: z.slug, html: renderZone(read('sr
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 const copy = (src, dest) => fs.cpSync(path.join(ROOT, src), path.join(DIST, dest || src), { recursive: true });
-['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js', 'google41e7d606cc4d3619.html'].forEach(f => copy(f));
+['assets', 'admin', 'styles.css', 'upgrade.css', 'app.js', 'upgrade.js', 'google41e7d606cc4d3619.html', 'favicon.ico', 'site.webmanifest'].forEach(f => copy(f));
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 for (const z of zonePages) {
   fs.mkdirSync(path.join(DIST, z.slug), { recursive: true });
